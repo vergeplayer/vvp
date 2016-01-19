@@ -1,0 +1,4 @@
+.eslintrc
+{
+    "extends": "eslint"
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 全局环境变量-->
+    <!-- 全局变量设置-->
+    <!-- HTML头部信息-->
+    <title>Verge Video Player UItest</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Test vvp in the youku.com/player.youku.com">
+    <meta name="revisit-after" content="3 days">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link(href = 'img/favicon.ico', rel = 'shortcut icon', type = '')-->
+    <!-- 环境样式可任意添加-->
+    <link href="/dev/stylesheets/vvp.css" rel="stylesheet">
+    <!-- 环境脚本可任意添加-->
+    <!--script(src = bowerpath + 'modernizr/modernizr.js')-->
+  </head>
+  <body>
+    <header class="header"></header>
+    <!-- Verge Video Player -->
+    <div id="root" title="" role="Video Player" tabindex="-1" style="width:640px;height:360px" class="vvp">
+      <!-- 播放器-->
+      <div class="vvp-stream">
+        <video id="video" title="视频"></video>
+      </div>
+      <!-- player播放层-->
+      <div id="root" class="vvp-player">
+        <!-- 视频信息-->
+        <div class="vvp-videoinfo">
+          <h1 class="vvp-video-title">视频:视频信息标题标题标题啊 </h1>
+          <div class="vvp-video-more"> <a href="#" title="更多我的视频">更多我的视频 &gt;</a></div>
+        </div>
+        <!-- 广告-->
+        <div class="vvp-advert">
+          <div class="vvp-advert-info"><span class="vvp-adver-countdown">广告剩余时间<span class="vvp-advert-sec">5</span>秒</span><span class="vvp-adver-skip"><a href="http://" target="_blank">跳过广告</a></span>
+          </div>
+          <div class="vvp-advert-more"><a href="#" title="">了解详情 &gt;&gt;</a></div>
+        </div>
+        <!-- 视频加载-->
+        <div id="root" class="vvp-loading"></div>
+        <!-- 视频截图-->
+        <div id="root" class="vvp-poster"></div>
+        <!-- 大播放按钮-->
+        <div id="root" class="vvp-play-big-btn"></div>
+        <!-- 错误信息-->
+        <div class="vvp-error"></div>
+        <!-- 字幕信息-->
+        <div class="vvp-subtitles"></div>
+        <!-- 控制面板-->
+        <div id="root" class="vvp-dashboard">
+          <!-- 迷你进度条-->
+          <div class="vvp-progress-mini">
+            <div class="vvp-progress-mini-track"></div>
+            <div style="width:220px;" class="vvp-progress-mini-buffer"></div>
+            <div style="width:120px;" class="vvp-progress-mini-played"></div>
+          </div>
+          <!-- 进度条 -->
+          <div class="vvp-progress">
+            <div class="vvp-progress-track"></div>
+            <div id="buffer" style="width:0px;" class="vvp-progress-buffer"></div>
+            <div id="played" style="width:0px;" class="vvp-progress-played"></div>
+            <div id="handle" class="vvp-progress-handle"></div>
+            <div class="vvp-progress-seek"></div>
+          </div>
+          <!-- 视频预览-->
+          <!--include ./dashboard/storyboard-->
+          <!-- 控制器-->
+          <div class="vvp-controls">
+            <!-- 播放暂停按钮-->
+            <div class="vvp-play-btn">
+              <!-- 播放按钮-->
+              <button role="play" id="btn"><i id="bg" class="vvp-ico vvp-ico-youku-play"></i><i id="icon" class="vvp-ico vvp-ico-play"></i></button>
+              <!-- 播放暂停-->
+              <!--button(role="pause" style="display:none")-->
+              <!--    i(class="vvp-ico vvp-ico-pause")
+              //svg(xmlns:xlink = "http://www.w3.org/1999/xlink", height = "100%", version = "1.1", viewBox = "0 0 36 36", width="100%")
+              //    defs
+              //        path(id = "vvp-play-btn", d = "M0.754 406.146l76.363-0.167-0.103-54.562-76.432 0.147-0.56-275.93h0.062l-0.075-44.005c-0.239-19.952 4.163-33.267 13.568-40.731 8.476-7.56 23.677-11.223 46.343-11.298l127.955-0.239c22.72-0.048 37.922 3.547 46.384 11.080 9.487 7.457 13.93 20.73 13.807 40.662l0.089 44.060h0.185l0.561 275.913-71.209 0.113 0.116 54.592 71.968-0.167 0.144 52.536-249.050 0.484-0.116-52.488zM51.786 300.016l25.099-0.072v-1.405c-0.055-41.052-6.576-86.236-22.604-109.824l-2.762-4.026 0.267 115.327zM197.061 54.247c0-9.549-1.367-16.706-5.537-20.875-3.582-3.445-8.899-5.271-16.322-5.209-0.383 0-21.791 0.014-46.521 0.082-3.083 0.014-6.247 0.014-9.337 0.041-24.771 0.048-46.042 0.082-46.527 0.082-7.43 0.048-12.74 1.832-16.254 5.291-4.156 4.21-5.448 11.332-5.42 20.936l0.082 31.709 145.932-0.273-0.096-31.784zM177.581 299.75l19.986-0.027-0.191-94.445h-2.912c-11.429 0-17.020 7.874-17.020 23.437l0.137 71.035zM119.823 405.893l15.379-0.027-0.144-54.583-15.359 0.038 0.124 54.572zM119.577 298.454v1.422l15.393-0.027-0.164-81.188c-0.068-29.118 22.707-52.043 51.907-52.084l10.594-0.232-0.082-31.101-145.945 0.286 0.082 42.468 35.448-21.456c15.912 19.029 32.63 75.057 32.767 141.912zM281.052 31.034c-0.26-19.945 4.197-33.219 13.589-40.711 8.448-7.56 23.69-11.236 46.336-11.284l97.852-0.211c22.665-0.048 37.963 3.567 46.384 11.094 9.419 7.457 13.957 20.758 13.779 40.662l0.328 163.594-217.927 0.438-0.341-163.582zM337.976 145.571l104.523-0.198-0.197-91.358c-0.041-9.598-1.34-16.706-5.605-20.848-3.561-3.527-8.797-5.223-16.24-5.195-0.15 0-3.568 0-9.241 0-9.364 0.027-24.928 0.041-42.439 0.082-5.681 0.027-9.050 0.027-9.269 0.027-7.416 0.021-12.728 1.757-16.254 5.291-4.184 4.183-5.496 11.236-5.421 20.848l0.143 91.351zM423.293 273.991l0.157 70.854 73.137-0.14 0.109 49.207-73.164 0.154 0.164 74.969-56.951 0.14-0.164-75.020-38.64 0.113 0.246 1.644c2.905 16.869 5.188 33.598 6.623 49.962l-52.405 4.146c-2.926-56.955-22.938-138.769-25.399-149.981l47.73-9.436c1.251 5.123 7.56 28.762 12.275 51.797l0.622 2.666 48.831-0.126-0.144-70.833-99.65 0.201-0.144-49.853 245.356-0.519 0.118 49.874-88.707 0.181z")
+              -->
+            </div>
+            <!-- 视频时间-->
+            <div class="vvp-time-display"><span id="current" class="vvp-time-current">00:00</span><span class="vvp-time-separator">/</span><span id="duration" class="vvp-time-duration">00:00</span></div>
+            <!-- 声音 -->
+            <!--include ./controls/volume-->
+            <!-- 下一个 -->
+            <!--include ./controls/next-->
+            <!-- 上一个 -->
+            <!--include ./controls/previous-->
+            <!-- 快进 -->
+            <!--include ./controls/forward-->
+            <!-- 快退-->
+            <!--include ./controls/rewind-->
+            <!-- 扩展开关 -->
+            <!--include ./controls/extend-->
+            <!-- 字幕开关-->
+            <div class="vvp-subtitles-switch"></div>
+            <!-- 播放速度-->
+            <!--include ./controls/speed-->
+            <!-- 剧集-->
+            <div class="vvp-playshow">
+              <button title="选集"> <span class="vvp-txt-btn">选集</span></button>
+            </div>
+            <!-- 本地化-->
+            <div class="vvp-localization">
+              <button title="国语"><span class="vvp-txt-btn">国语</span></button>
+            </div>
+            <!-- 清晰度-->
+            <div class="vvp-quality">
+              <button title="高清"> <span class="vvp-txt-btn">高清</span></button>
+              <div class="vvp-panel">
+                <button data-vid="XNDc4ODU5MjY4" data-language="英语" data-language-code="en" class="vvp-selected">英语 </button>
+                <button data-vid="XNDI5MzIxMDY0" data-language="国语" data-language-code="guoyu">国语</button>
+              </div>
+            </div>
+            <!-- 全屏-->
+            <div id="root" class="vvp-fullscreen">
+              <button role="fullscreen"><i id="icon" class="vvp-ico vvp-ico-fullscreen"></i></button>
+            </div>
+          </div>
+        </div>
+        <!-- 用户信息交互-->
+        <div class="vvp-feedback"></div>
+        <!-- 遮罩-->
+        <div class="vvp-overlay"></div>
+        <!-- 属性信息-->
+        <div class="vvp-contextmenu"></div>
+      </div>
+      <!-- service业务逻辑层-->
+      <div class="vvp-service">
+        <!-- 付费-->
+        <div class="vpp-pay"></div>
+        <!-- 视频加密-->
+        <div class="vvp-encryption"></div>
+        <!-- 会员视频-->
+        <div class="vvp-vip"></div>
+        <!-- 聚集-->
+        <div class="vvp-showlist"></div>
+      </div>
+      <!-- plugin插件层-->
+      <div class="vvp-plugin">
+        <!-- 弹幕 -->
+        <div class="vvp-danmuku"></div>
+      </div>
+      <!-- 触发器-->
+      <div id="root" class="vvp-trigger"></div>
+      <!-- 触发器-->
+      <div class="vvp-stage"></div>
+    </div>
+    <!--include footer-->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  </body>
+</html>

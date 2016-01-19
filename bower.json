@@ -1,0 +1,29 @@
+{
+  "name": "vvp",
+  "description": "Verge Video Player",
+  "main": "gulpfile.js",
+  "authors": [
+    "Yuan Liang"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "sass",
+    "eslint",
+    "gulp",
+    "html5"
+  ],
+  "homepage": "https://github.com/vergeplayer/vvp",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "zepto": "~1.1.6"
+  }
+}

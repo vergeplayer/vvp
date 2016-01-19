@@ -1,0 +1,55 @@
+// Flex Box Flex盒模型
+
+// argument
+// 
+//
+
+@mixin display-flex($alignment: '', $justification: '') {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  @if $alignment != '' {
+    -webkit-box-align: $alignment;
+    -webkit-align-items: $alignment;
+    -ms-flex-align: $alignment;
+    align-items: $alignment;
+  }
+
+  @if $justification != '' {
+    -webkit-box-pack: $justification;
+    -webkit-justify-content: $justification;
+    -ms-flex-pack: $justification;
+    justify-content: $justification;
+  }
+}
+
+@mixin flex($value) {
+  -webkit-box-flex: $value;
+  -moz-box-flex: $value;
+  -webkit-flex: $value;
+  -ms-flex: $value;
+  flex: $value;
+}
+
+@mixin order($value) {
+  -webkit-box-ordinal-group: $value;
+  -moz-box-ordinal-group: $value;
+  -ms-flex-order: $value;
+  -webkit-order: $value;
+  order: $value;
+}
+
+%fill-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+%icon-default {
+  @extend %fill-parent;
+  text-align: center;
+}

@@ -1,0 +1,18 @@
+//- layout.jade
+doctype html
+html
+    head
+        // 全局环境变量
+        block variables
+        // HTML头部信息
+        include html-head
+        // 环境样式可任意添加
+        block stylesheets
+        // 环境脚本可任意添加
+        block scripts 
+    body
+        include header
+        // Verge Video Player 
+        block verge
+        //include footer
+        include scripts

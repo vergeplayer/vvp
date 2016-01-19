@@ -1,0 +1,52 @@
+//
+// Glyphicons for Verge Video Player
+//
+// Since icons are fonts, they can be placed anywhere text is placed and are
+// thus automatically sized to match the surrounding child. To use, create an
+// inline element with the appropriate classes, like so:
+//
+// <a href="#"><span class="vvpico vvp-ico-star"></span> Star</a>
+
+// Import the fonts
+
+// 字体图标文件
+//--------------------------------------------------------------------------------
+// 自定义的矢量字体图标，每个图标对应一个字符。字体图标可以很方便的控制图标的扩展。
+// (例. "\e001").
+// 详细请参看文档 地址:
+@at-root {
+  // Import the fonts
+    @font-face {
+        font-family: 'vvp';
+        src: url(#{$icon-font-path}#{$icon-font-name}.eot);
+        src: url(#{$icon-font-path}#{$icon-font-name}.eot?#iefix) format('embedded-opentype'),
+             url(#{$icon-font-path}#{$icon-font-name}.woff) format('woff'),
+             url(#{$icon-font-path}#{$icon-font-name}.ttf) format('truetype'),
+             url(#{$icon-font-path}#{$icon-font-name}.svg#icomoon) format('svg');
+    }
+}
+
+.vvp-ico {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-size: 200%; // <--临时设置
+    font-family: 'vvp';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// icons
+.vvp-ico-youku-play         { &:before { content: "\30"; } } // 播放
+.vvp-ico-play               { &:before { content: "\c0"; } } // 播放
+.vvp-ico-pause              { &:before { content: "\c1"; } } // 暂停
+.vvp-ico-fullscreen         { &:before { content: "\c7"; } } // 全屏
+.vvp-ico-exitfullscreen     { &:before { content: "\c8"; } } // 退出全屏
+.vvp-ico-volume-large       { &:before { content: "\c9"; } } // 音量大
+.vvp-ico-volume-small       { &:before { content: "\ca"; } } // 音量小
+.vvp-ico-mute               { &:before { content: "\cb"; } } // 静音

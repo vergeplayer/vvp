@@ -1,0 +1,19 @@
+{
+  "name": "vQ",
+  "version": "0.1.0",
+  "description": "A simple implementation of jQuery",
+  "author": "zhengzk",
+  "exports":"window",
+  "scripts":{
+    "dependencies": {},
+    "lib":[
+      "../base/variables.js"
+    ],
+    "src":[
+      "vq.js",
+      "module/**/*.js",
+      "ready.js",
+      "exports.js"
+    ]
+  }
+}

@@ -1,0 +1,768 @@
+//
+// Variables 全局变量
+// --------------------------------------------------
+//
+
+
+//== Colors
+//
+//
+//== 颜色设置
+//
+
+$color-base:            #000 !default; // lighten方法 -> 增加亮度
+$color-darker:          lighten($color-base, 13.5%) !default; // #222
+$color-dark:            lighten($color-base, 20%) !default;   // #333
+$color:                 lighten($color-base, 33.5%) !default; // $555
+$color-light:           lighten($color-base, 46.7%) !default; // #777
+$color-lighter:         lighten($color-base, 93.5%) !default; // #eee
+$color-lightest:        lighten($color-base, 100%) !default;  // #fff
+
+$color-primary:         #2c8ce0 !default; // 主颜色
+$color-success:         #5cb85c !default; // 成功颜色
+$color-info:            #5bc0de !default; // 信息颜色
+$color-warning:         #f0ad4e !default; // 警告颜色
+$color-danger:          #d9534f !default; // 危险提示颜色
+$color-track:           #555555 !default; // 轨道颜色
+$color-played:          #eb3c10 !default; // 进度颜色
+$color-buffer:          #909090 !default; // 缓冲颜色
+$color-code:            #c7254e !default; // 代码颜色
+
+// for youku skin
+// 优酷皮肤适用
+$color-pay:             #ff822e !default; // 付费颜色
+$color-play-btn-start:  #f3442e !default; // 播放按钮渐变
+$color-play-btn-end:    #cf311f !default; //
+$color-play-btn-cricle: #8ed8f8 !default; // 外圈
+$color-pause-btn-start: #1fb0e4 !default; // 暂停按钮渐变
+$color-pause-btn-end:   #0697cb !default; // 暂停按钮渐变
+
+//## Background Alpha
+// 默认背景透明度
+$bg-alpha-number:    ceil(0);
+$bg-alpha-base:      0.7;
+$bg-dashboard:       #f5f5f5;  // 播放器控制条背景
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles 全局样式设定.
+//
+//== 主题框架变量设定
+//
+
+//** Background color for vvp
+// 主体背景色.
+$color-bg:              $color !default;
+//** Global text color on vvp
+// 主体文本色.
+$text-color:            $color-dark !default;
+//** Global textual link color
+// 主体链接色. for PC
+$link-color:            $color-lighter !default;
+//** Link hover color set via `darken()` function.
+// 链接鼠标滑过颜色 for PC
+$link-hover-color:      darken($link-color, 15%) !default;
+//** Link hover decoration.
+// 链接鼠标滑过消除下划线 for PC
+$link-hover-decoration: underline !default;
+
+
+//== Typography
+//
+//## Font, line-height, and color for vvp text, headings, and more 字体、行高、标题 等.
+//
+//== 文字排版样式设定
+//
+
+$font-family-chinese:     "Microsoft YaHei", "微软雅黑"  !default; // 中文字体为微软雅黑
+$font-family-western:     Helvetica, Arial, sans-serif !default; // 英文字体
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default; // 等宽字体 用于页面包含代码情况 如 url
+$font-family-base:        join($font-family-chinese, $font-family-western); // 默认基础字体
+
+// Start with 10px for base font size so other dimensions can be em based and
+// easily calculable.
+// 用于基础em值的计算 10像素比较方便计算
+$font-size-em:            10px !default;
+$font-size-base:          14px !default; // 基础字号
+$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
+
+$font-size-h1:            floor(($font-size-base * 2.6)) !default; // ~36px
+$font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
+$font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
+$font-size-h4:            ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-h5:            $font-size-base !default;
+$font-size-h6:            ceil(($font-size-base * 0.85)) !default; // ~12px
+
+//** Unit `line-height` for use in components like buttons.
+// 基础行高
+$line-height-base:        1.428571429 !default;
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
+
+//** By default, this inherits from the `vvp`.
+$headings-font-family:    inherit !default;
+$headings-font-weight:    500 !default;
+$headings-line-height:    1.1 !default;
+$headings-color:          inherit !default;
+
+
+//== Iconography
+//
+//## 自定义的矢量字体图标，每个图标对应一个字符。字体图标可以很方便的控制图标的扩展。
+//## (例. "\e001").
+//## 详细请参看文档 地址:
+//
+//== 字体图标
+//
+
+//** Load fonts from this directory.
+$icon-font-path:          "../assets/fonts/" !default;
+//** File name for all font files.
+$icon-font-name:          "vvp" !default;
+//** Element ID within SVG icon file.
+$icon-font-svg-id:        "vvp" !default;
+
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+//## 定义内边距、边框、圆角等 基础值为14px
+//
+//== 组件
+//
+
+$padding-base-vertical:     6px !default;
+$padding-base-horizontal:   12px !default;
+
+$padding-large-vertical:    10px !default;
+$padding-large-horizontal:  16px !default;
+
+$padding-small-vertical:    5px !default;
+$padding-small-horizontal:  10px !default;
+
+$padding-xs-vertical:       1px !default;
+$padding-xs-horizontal:     5px !default;
+
+$line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
+$line-height-small:         1.5 !default;
+
+$border-radius-base:        4px !default;
+$border-radius-large:       6px !default;
+$border-radius-small:       3px !default;
+
+//** Global color for active items (e.g., navs or dropdowns).
+// 全局选中颜色
+$active-color:    $color-lighter !default;
+//** Global background color for active items (e.g., navs or dropdowns).
+// 全局选中背景颜色
+$active-bg:       $color-primary !default;
+
+//** Width of the `border` for generating carets that indicator dropdowns.
+$caret-width-base:        4px !default;
+//** Carets increase slightly in size for larger components.
+$caret-width-large:       5px !default;
+
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+//
+//== 表格
+//
+
+//** Padding for `<th>`s and `<td>`s.
+// 表格内边距
+$table-cell-padding:            8px !default;
+//** Padding for cells in `.table-condensed`.
+$table-condensed-cell-padding:  5px !default;
+
+//** Default background color used for all tables.
+// 表格默认颜色
+$table-bg:                      transparent !default;
+//** Background color used for `.table-striped`.
+// 表格条纹色
+$table-bg-accent:               $color-lighter !default;
+//** Background color used for `.table-hover`.
+// 表格滑过颜色 for PC
+$table-bg-hover:                $color-info !default;
+$table-bg-active:               $color-primary !default;
+
+//** Border color for table and cell borders.
+$table-border-color:            $color-light !default;
+
+//== Buttons
+//
+//## buttons, define text, background and border color.
+//
+//==  按钮
+//
+
+$btn-font-weight:            normal !default;
+
+$btn-base-color:             $color-dark !default;
+$btn-base-bg:                $color-lightest !default;
+$btn-base-border:            $color-light!default;
+
+$btn-primary-color:          $color-lightest !default;
+$btn-primary-bg:             $color-primary !default;
+$btn-primary-border:         darken($btn-primary-bg, 5%) !default;
+
+$btn-success-color:          $color-lightest !default;
+$btn-success-bg:             $color-success !default;
+$btn-success-border:         darken($btn-success-bg, 5%) !default;
+
+$btn-info-color:             $color-lightest !default;
+$btn-info-bg:                $color-info !default;
+$btn-info-border:            darken($btn-info-bg, 5%) !default;
+
+$btn-warning-color:          $color-lightest !default;
+$btn-warning-bg:             $color-warning !default;
+$btn-warning-border:         darken($btn-warning-bg, 5%) !default;
+
+$btn-danger-color:           $color-lightest !default;
+$btn-danger-bg:              $color-danger !default;
+$btn-danger-border:          darken($btn-danger-bg, 5%) !default;
+
+$btn-pay-color:              $color-lightest!default;
+$btn-pay-bg:                 $color-pay !default;
+$btn-pay-border:             darken($btn-danger-bg, 5%) !default;
+
+$btn-link-disabled-color:    $color-lighter !default;
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius-base:     $border-radius-base !default;
+$btn-border-radius-large:    $border-radius-large !default;
+$btn-border-radius-small:    $border-radius-small !default;
+
+//== Forms 表单
+//
+//##
+//
+//==  表单
+//
+
+//** `<input>` background color
+// 文本框背景色
+$input-bg:                       $color-lightest !default;
+//** `<input disabled>` background color
+// 禁用颜色
+$input-bg-disabled:              $color-lighter !default;
+
+//** Text color for `<input>`s
+// 文本颜色
+$input-color:                    $color !default;
+//** `<input>` border color
+// 边框
+$input-border:                   $color-light !default;
+
+// This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
+$input-border-radius-base:       $border-radius-base !default;
+//** Large `.form-control` border radius
+$input-border-radius-large:      $border-radius-large !default;
+//** Small `.form-control` border radius
+$input-border-radius-small:      $border-radius-small !default;
+
+//** Border color for inputs on focus
+// input获得焦点时边框色
+$input-border-focus:             $color-primary !default;
+
+//** Placeholder text color
+// input占位文字颜色
+$input-color-placeholder:        $color-light !default;
+
+//** Default `.form-control` height
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+//** Large `.form-control` height
+$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
+//** Small `.form-control` height
+$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
+
+//** Disabled cursor for form controls and buttons.
+// 禁用输入样式
+$cursor-disabled:                not-allowed !default;
+
+
+//== Dropdowns
+//
+//## Dropdown menu container and contents.
+//
+//==  菜单
+//
+
+//** Background for the dropdown menu.
+// 背景色
+$dropdown-bg:                    $color-lightest !default;
+//** Dropdown menu `border-color`.
+// 边框色
+$dropdown-border:                rgba(0,0,0,.15) !default;
+//** Dropdown menu `border-color` **for IE8**.
+// 边框色 for PC
+// $dropdown-fallback-border:    $color-light !default;
+//** Divider color for between dropdown items.
+// 间隔色
+$dropdown-divider-bg:            $color-lighter !default;
+
+//** Dropdown link text color.
+// 链接色
+$dropdown-link-color:            $color-dark !default;
+//** Hover color for dropdown links.
+$dropdown-link-hover-color:      darken($color-dark, 5%) !default;
+//** Hover background for dropdown links.
+$dropdown-link-hover-bg:         $color-lighter!default;
+
+//** Active dropdown menu item text color.
+// 选中色
+$dropdown-link-active-color:     $active-color !default;
+//** Active dropdown menu item background color.
+// 选中背景色
+$dropdown-link-active-bg:        $active-bg !default;
+
+//** Disabled dropdown menu item background color.
+// 禁用
+$dropdown-link-disabled-color:   $color-light !default;
+
+//** Text color for headers within dropdown menus.
+$dropdown-header-color:          $color-light !default;
+
+//** Deprecated `$dropdown-caret-color` as of v3.1.0
+$dropdown-caret-color:           $color-base !default;
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+//
+//== 媒体查询 断点设置
+//
+
+// Extra small screen / phone
+// 小屏幕智能机
+//** Deprecated `$screen-xs`
+$screen-xs:                  480px !default;
+//** Deprecated `$screen-xs-min`
+$screen-xs-min:              $screen-xs !default;
+//** Deprecated `$screen-phone`
+$screen-phone:               $screen-xs-min !default;
+
+// Small screen / tablet
+// 小手持平板
+//** Deprecated `$screen-sm`
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+//** Deprecated `$screen-tablet`
+$screen-tablet:              $screen-sm-min !default;
+
+// Medium screen / desktop
+// 桌面应用
+//** Deprecated `$screen-md`
+$screen-md:                  992px !default;
+$screen-md-min:              $screen-md !default;
+//** Deprecated `$screen-desktop`
+$screen-desktop:             $screen-md-min !default;
+
+// Large screen / wide desktop
+// 大屏幕显示器
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg:                  1200px !default;
+$screen-lg-min:              $screen-lg !default;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop:          $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+//
+//== 网格布局
+//
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+//
+//== 表格状态和提示信息
+//
+
+$state-success-text:             #3c763d !default;
+$state-success-bg:               darken(adjust-hue($state-success-text, -10), 5%) !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -5), 5%) !default;
+
+$state-info-text:                $color-info !default;
+$state-info-bg:                  darken(adjust-hue($state-info-text, -10), 5%) !default;
+$state-info-border:              darken(adjust-hue($state-info-bg, -5), 5%) !default;
+
+$state-warning-text:             #8a6d3b !default;
+$state-warning-bg:               darken(adjust-hue($state-warning-text, -10), 5%) !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -5), 5%) !default;
+
+$state-danger-text:              #a94442 !default;
+$state-danger-bg:                darken(adjust-hue($state-danger-text, -10), 5%) !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -5), 5%) !default;
+
+$state-pay-text:                 $color-pay !default;
+$state-pay-bg:                   darken(adjust-hue($state-pay-text, -10), 5%) !default;
+$state-pay-border:               darken(adjust-hue($state-pay-bg, -5), 5%) !default;
+
+
+//== Tooltips
+//
+//##
+//
+//== 提示信息
+//
+
+//** Tooltip max width
+$tooltip-max-width:           200px !default;
+//** Tooltip text color
+$tooltip-color:               $color-lightest !default;
+//** Tooltip background color
+$tooltip-bg:                  $color-base !default;
+
+//** Tooltip arrow width
+$tooltip-arrow-width:         5px !default;
+//** Tooltip arrow color
+$tooltip-arrow-color:         $tooltip-bg !default;
+
+
+//== Labels
+//
+//##
+//
+//== 文字标签
+//
+
+//** Default label background color
+$label-default-bg:            $color-light !default;
+//** Primary label background color
+$label-primary-bg:            $color-primary !default;
+//** Success label background color
+$label-success-bg:            $color-success !default;
+//** Info label background color
+$label-info-bg:               $color-info !default;
+//** Warning label background color
+$label-warning-bg:            $color-warning !default;
+//** Danger label background color
+$label-danger-bg:             $color-danger !default;
+//** Pay label background color
+$label-pay-bg:                $color-pay !default;
+
+//** Default label text color
+$label-color:                 $color-lightest !default;
+//** Default text color of a linked label
+$label-link-hover-color:      $color-lightest;
+
+
+
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+//
+//== 警告提示
+//
+
+$alert-padding:               15px !default;
+$alert-border-radius:         $border-radius-base !default;
+$alert-link-font-weight:      bold !default;
+
+$alert-success-bg:            $state-success-bg !default;
+$alert-success-text:          $state-success-text !default;
+$alert-success-border:        $state-success-border !default;
+
+$alert-info-bg:               $state-info-bg !default;
+$alert-info-text:             $state-info-text !default;
+$alert-info-border:           $state-info-border !default;
+
+$alert-warning-bg:            $state-warning-bg !default;
+$alert-warning-text:          $state-warning-text !default;
+$alert-warning-border:        $state-warning-border !default;
+
+$alert-danger-bg:             $state-danger-bg !default;
+$alert-danger-text:           $state-danger-text !default;
+$alert-danger-border:         $state-danger-border !default;
+
+$alert-pay-bg:                $state-pay-bg !default;
+$alert-pay-text:              $state-pay-text !default;
+$alert-pay-border:            $state-pay-border !default;
+
+
+//== Progress bars
+//
+//## the whole  progress bar component
+//
+//== 通用进度条 非视频进度条
+//
+
+//** Background color of the whole progress component
+$progress-bg:                 $color-lighter !default;
+//** Progress bar text color
+$progress-bar-color:          $color-lightest !default;
+//** Variable for setting rounded corners on progress bar.
+$progress-border-radius:      $border-radius-base !default;
+
+//** Default progress bar color
+$progress-bar-bg:             $color-primary !default;
+//** Success progress bar color
+$progress-bar-success-bg:     $color-success !default;
+//** Warning progress bar color
+$progress-bar-warning-bg:     $color-warning !default;
+//** Danger progress bar color
+$progress-bar-danger-bg:      $color-danger !default;
+//** Info progress bar color
+$progress-bar-info-bg:        $color-info !default;
+//** Pay progress bar color
+$progress-bar-pay-bg:         $color-pay !default;
+
+//== Player progress bars
+//
+//## video player progress bar
+//
+//== 视频播放器进度条
+//
+
+//** Background color of the video player
+$progress-video-bg:                 $color-darker !default;
+//** Track progress bar color
+$progress-video-track:              $color-track !default;
+//** Buffer progress bar color
+$progress-video-buffer:             $color-buffer !default;
+//** Played progress bar color
+$progress-video-played:             $color-played !default;
+
+//== List group
+//
+//##
+
+//** Background color on `.list-group-item`
+$list-group-bg:                 $color-lightest !default;
+//** `.list-group-item` border color
+$list-group-border:             $color !default;
+//** List group border radius
+$list-group-border-radius:      $border-radius-base !default;
+
+//** Background color of single list items on hover
+$list-group-hover-bg:           $color-lighter !default;
+//** Text color of active list items
+$list-group-active-color:       $active-color !default;
+//** Background color of active list items
+$list-group-active-bg:          $active-bg !default;
+//** Border color of active list elements
+$list-group-active-border:      $list-group-active-bg !default;
+//** Text color for content within active list items
+$list-group-active-text-color:  lighten($list-group-active-bg, 40%) !default;
+
+//** Text color of disabled list items
+$list-group-disabled-color:      $color-light !default;
+//** Background color of disabled list items
+$list-group-disabled-bg:         $color-lighter !default;
+//** Text color for content within disabled list items
+$list-group-disabled-text-color: $list-group-disabled-color !default;
+
+$list-group-link-color:          $color !default;
+$list-group-link-hover-color:    $list-group-link-color !default;
+$list-group-link-heading-color:  $color-dark !default;
+
+
+//== Panels
+//
+//##
+
+$panel-bg:                    $color-lightest !default;
+$panel-padding:               15px !default;
+$panel-heading-padding:       10px 15px !default;
+$panel-footer-padding:        $panel-heading-padding !default;
+$panel-border-radius:         $border-radius-base !default;
+
+//** Border color for elements within panels
+$panel-inner-border:          $color-light !default;
+$panel-footer-bg:             $color-lighter !default;
+
+$panel-default-text:          $color-dark !default;
+$panel-default-border:        $color-light !default;
+$panel-default-heading-bg:    $color-lighter !default;
+
+$panel-primary-text:          $color-lightest !default;
+$panel-primary-border:        $color-primary !default;
+$panel-primary-heading-bg:    $color-primary !default;
+
+$panel-success-text:          $state-success-text !default;
+$panel-success-border:        $state-success-border !default;
+$panel-success-heading-bg:    $state-success-bg !default;
+
+$panel-info-text:             $state-info-text !default;
+$panel-info-border:           $state-info-border !default;
+$panel-info-heading-bg:       $state-info-bg !default;
+
+$panel-warning-text:          $state-warning-text !default;
+$panel-warning-border:        $state-warning-border !default;
+$panel-warning-heading-bg:    $state-warning-bg !default;
+
+$panel-danger-text:           $state-danger-text !default;
+$panel-danger-border:         $state-danger-border !default;
+$panel-danger-heading-bg:     $state-danger-bg !default;
+
+$panel-pay-text:              $state-pay-text !default;
+$panel-pay-border:            $state-pay-border !default;
+$panel-pay-heading-bg:        $state-pay-bg !default;
+
+
+//== Thumbnails
+//
+//##
+//
+//== 缩略图
+//
+
+//** Padding around the thumbnail image
+$thumbnail-padding:           4px !default;
+//** Thumbnail background color
+$thumbnail-bg:                $color-bg !default;
+//** Thumbnail border color
+$thumbnail-border:            $color-light !default;
+//** Thumbnail border radius
+$thumbnail-border-radius:     $border-radius-base !default;
+
+//** Custom text color for thumbnail captions
+$thumbnail-caption-color:     $text-color !default;
+//** Padding around the thumbnail caption
+$thumbnail-caption-padding:   9px !default;
+
+
+//== Wells
+//
+//##
+//
+//==
+//
+
+$well-bg:                     $color-lighter !default;
+$well-border:                 darken($well-bg, 7%) !default;
+
+
+//== Badges
+//
+//##
+//
+//==
+//
+
+$badge-color:                 $color-lightest !default;
+//** Linked badge text color on hover
+$badge-link-hover-color:      $color-lightest !default;
+$badge-bg:                    $color-light !default;
+
+//** Badge text color in active nav link
+$badge-active-color:          $link-color !default;
+//** Badge background color in active nav link
+$badge-active-bg:             $color-lightest !default;
+
+$badge-font-weight:           bold !default;
+$badge-line-height:           1 !default;
+$badge-border-radius:         10px !default;
+
+
+//== Breadcrumbs
+//
+//##
+//
+//== 面包屑
+//
+
+$breadcrumb-padding-vertical:   8px !default;
+$breadcrumb-padding-horizontal: 15px !default;
+//** Breadcrumb background color
+$breadcrumb-bg:                 $color-lighter !default;
+//** Breadcrumb text color
+$breadcrumb-color:              $color-light !default;
+//** Text color of current page in the breadcrumb
+$breadcrumb-active-color:       $color-light !default;
+//** Textual separator for between breadcrumb elements
+$breadcrumb-separator:          "/" !default;
+
+
+//== Carousel
+//
+//##
+//
+//==
+//
+
+$carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
+
+$carousel-control-color:                      $color-lightest !default;
+$carousel-control-width:                      15% !default;
+$carousel-control-opacity:                    .5 !default;
+$carousel-control-font-size:                  20px !default;
+
+$carousel-indicator-active-bg:                $color-lightest !default;
+$carousel-indicator-border-color:             $color-lightest !default;
+
+$carousel-caption-color:                      $color-lightest !default;
+
+
+//== Close
+//
+//##
+//
+//==
+//
+
+$close-font-weight:           bold !default;
+$close-color:                 $color-base !default;
+$close-text-shadow:           0 1px 0 $color-lightest !default;
+
+
+//== Code
+//
+//##
+//
+//== 代码
+//
+
+$code-color:                  $color-code !default;
+$code-bg:                     $color-lighter !default;
+
+$kbd-color:                   $color-lightest !default;
+$kbd-bg:                      $color-dark !default;
+
+$pre-bg:                      $color-lighter !default;
+$pre-color:                   $color-dark !default;
+$pre-border-color:            $color-light !default;
+$pre-scrollable-max-height:   340px !default;
+
+
+//== Type
+//
+//##
+//
+//== 排版
+//
+
+//** Horizontal offset for forms and lists.
+$component-offset-horizontal: 180px !default;
+//** Text muted color
+$text-muted:                  $color-light !default;
+//** Abbreviations and acronyms border color
+$abbr-border-color:           $color-light !default;
+//** Headings small color
+$headings-small-color:        $color-light !default;
+//** Blockquote small color
+$blockquote-small-color:      $color-light !default;
+//** Blockquote font size
+$blockquote-font-size:        ($font-size-base * 1.25) !default;
+//** Blockquote border color
+$blockquote-border-color:     $color-lighter !default;
+//** Page header border color
+$page-header-border-color:    $color-lighter !default;
+//** Width of horizontal description list titles
+//$dl-horizontal-offset:        $offset-horizontal !default;
+//** Point at which .dl-horizontal becomes horizontal
+//$dl-horizontal-breakpoint:    $grid-float-breakpoint !default;
+//** Horizontal line color.
+$hr-border:                   $color-lighter !default;

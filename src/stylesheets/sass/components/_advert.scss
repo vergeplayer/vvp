@@ -1,0 +1,18 @@
+//
+// Advert 广告
+// --------------------------------------------------
+
+.vvp-advert {
+    font-size: 1.4em;
+    flex-direction: column;
+    @include hide-display();
+    @include display-flex(flex-end, flex-end);
+    @include size(100%, 100%)
+    .vvp-advert-info {
+        align-self: flex-start;
+        @include size(100%, 5em)
+    }
+    .vvp-advert-more {
+        
+    }
+}

@@ -1,0 +1,51 @@
+//
+// Fix Video Position
+// --------------------------------------------------
+//
+// For PC
+//
+
+.vvp {
+    position: relative;
+    width: 100%;
+    height: 0; // For IE 触发布局
+    padding-bottom: 20%;
+
+    .vvp-stream {
+        position: relative;
+        padding-bottom: 56.25%; // 16:9的比例 4:3时该值为75%
+        height: 0;
+        margin-bottom: 45px;
+    }
+
+    // 设置video的默认宽高
+    object,
+    embed,
+    video {
+        position:absolute; // 使其播放器定位在填充区域
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+
+}
+
+// for hack 当需要支持IE6时开启
+// 使用该HACK需要为video外层单独添加一个父元素
+//.vvp .vpp-stream-wrap {
+//    // 设置video的默认宽高
+//    object,
+//    embed,
+//    video {
+//        position:absolute; // 使其播放器定位在填充区域
+//         width: 100%;
+//         height: 100%;
+//         left: 0;
+//         top: 0;
+//     }
+// }
+//.vvp .vpp-stream-wrap .vvp-stream{
+//    margin-bottom: _45px;
+//    margin-bottom': !0;
+//}

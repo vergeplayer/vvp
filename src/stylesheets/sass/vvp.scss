@@ -1,0 +1,48 @@
+/*!
+ * Verge Video Player(vvp) v1.0
+ * Copyright 2015 - 2016 1Verge, Inc.
+ * Licensed under MIT
+ */
+
+// 可以在线创建自己的皮肤在
+// 可以通过对该文件的编辑来设定自己的皮肤。
+// (该文件使用Sass创建，详细请参考Sass官方文档 http://sass-lang.com/)
+// 设置基础字体字号(不仅包括字体，也包括整体界面的大小)
+// 可以尝试将该值修改为20px，查看整体效果。
+// 可触摸的默认字体大小为16px
+
+// Core variables and mixins
+@import "variables";    // 全局变量
+@import "utilities";    // 工具
+@import "mixins";    // 全局方法
+
+// Reset and dependencies
+@import "common/normalize";    // 全局初始化reset
+//@import "print";    //<-- 打印样式暂不需要
+@import "common/glyphicons";    // 字体图标
+
+// Core CSS
+@import "common/scaffolding";
+@import "common/type";
+@import "common/z-index";
+//@import "code";    //<-- 代码样式暂不需要
+
+//@import "grid";
+//@import "tables";
+//@import "forms";
+//@import "buttons";
+
+// Components
+@import "components/stream"; // 播放器
+@import "components/videoinfo"; // 视频信息
+@import "components/advert"; // 视频广告
+@import "components/dashboard";
+@import "components/dashboard/controls"; // 控制区域
+@import "components/dashboard/controls/panel";
+@import "components/dashboard/controls/fullscreen";
+@import "components/dashboard/controls/play-btn";
+@import "components/dashboard/controls/time-display";
+@import "components/dashboard/progress";
+
+// Components w/ JavaScript
+// @import "modals";

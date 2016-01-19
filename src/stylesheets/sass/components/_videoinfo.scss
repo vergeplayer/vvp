@@ -1,0 +1,22 @@
+//
+// Video info title etc.
+// --------------------------------------------------
+
+.vvp-videoinfo {
+    color: $color-lighter;
+    background: rgba(0 , 0 , 0 , 0.7);
+    padding: 0 1em;
+    align-items: center;
+    @include display-flex(center, center);
+    @include size(100%, 3.5em)
+    .vvp-video-title {
+        margin: 0;
+        font-size: 1.4em;
+        flex: 1;
+        @include text-overflow()
+    }
+    .vvp-video-more {
+        text-align: right;
+        @include size(8em, auto)
+    }
+}

@@ -1,0 +1,13 @@
+//
+// Fullscreen
+// --------------------------------------------------
+
+.vvp-fullscreen {
+}
+
+.vvp-ico-fullscreen {
+    //-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(#7f7f7f), to(#565656));
+    @include gradient-vertical-three-colors($color-light, $color, 50%, $color)
+    @include background-clip(text);
+    @include text-fill-color(transparent)
+}

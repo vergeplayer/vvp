@@ -1,0 +1,27 @@
+//
+// Play button
+// --------------------------------------------------
+
+.vvp-play-btn {
+    .vvp-ico {
+        position: relative;
+        @include background-clip(text);
+        @include text-fill-color(transparent)
+    }
+    .vvp-ico-play {
+        position: absolute;
+        font-size: 1.4em;
+        left: 41%;
+        top: 1em;
+        @include gradient-vertical($color-play-btn-start, $color-play-btn-end)
+    }
+    .vvp-ico-pause {
+        @include gradient-vertical($color-pause-btn-start, $color-pause-btn-end)
+        @include background-clip(text);
+        @include text-fill-color(transparent)
+    }
+}
+.vvp-ico-youku-play {
+    font-size: 3.2em;
+    @include gradient-radial(circle 0.38em, transparent, $color-play-btn-cricle)
+}

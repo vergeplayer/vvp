@@ -1,0 +1,58 @@
+//
+// Z-index
+// --------------------------------------------------
+
+.vvp {
+    z-index: 1000
+}
+
+// 主层级
+// ==================================================
+.vvp-stream {
+    z-index: 1000
+}
+
+.vvp-player {
+    z-index: 2000
+}
+
+// 次层级 controls -> .vvp-player
+// --------------------------------------------------
+.vvp-controls {
+    z-index: 200
+}
+
+// 进度条 .vvp-progress(mini)  -> .vvp-controls -> .vvp-player
+// --------------------------------------------------
+.vvp-progress,
+.vvp-progress-mini {
+    z-index:100
+}
+.vvp-progress-track
+.vvp-progress-mini-track {
+    z-index: 10
+}
+.vvp-progress-buffer
+.vvp-progress-mini-buffer {
+    z-index: 20
+}
+.vvp-progress-played
+.vvp-progress-mini-played {
+    z-index: 30
+}
+.vvp-progress-seek {
+    z-index: 40
+}
+.vvp-progress-handle {
+    z-index: 50
+}
+
+
+// 进度条 .vvp-play-btn
+// --------------------------------------------------
+.vvp-ico-youku-play {
+    z-index: 10
+}
+.vvp-ico-play {
+    z-index: 20
+}

@@ -1,0 +1,12 @@
+// Emphasis text 重点文本设置
+
+// [converter] $parent hack
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color;
+  }
+  a#{$parent}:hover,
+  a#{$parent}:focus {
+    color: darken($color, 10%);
+  }
+}

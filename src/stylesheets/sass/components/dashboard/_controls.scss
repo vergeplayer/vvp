@@ -1,0 +1,66 @@
+//
+// Controls
+// --------------------------------------------------
+
+.vvp-controls {
+    position: relative;
+    padding-top: 1em;
+    @include display-flex();
+    @include size(100%, 100%)
+}
+
+.vvp-play-btn,
+.vvp-time-display,
+.vvp-quality,
+.vvp-playshow,
+.vvp-localization,
+.vvp-fullscreen,
+.vvp-speed,
+.vvp-next,
+.vvp-previous,
+.vvp-extend {
+    position: relative;
+    display: none;
+    @include size(6em, 100%);
+    @include display-flex('center', 'center')
+}
+.vvp-txt-btn {
+    color: $color-lighter;
+    display: inline-block;
+    line-height: 2em;
+    border-radius: 0.3em;
+    @include size(3.5em, 2em);
+    @include gradient-vertical($color-light, $color)
+}
+.vvp-play-btn {
+    order: 10
+}
+.vvp-previous {
+    order: 20
+}
+.vvp-next {
+    order: 30
+}
+.vvp-speed {
+    order: 40
+}
+.vvp-time-display {
+    flex: 1;
+    order: 50
+
+}
+.vvp-extend {
+    order: 60
+}
+.vvp-playshow {
+    order: 70
+}
+.vvp-localization {
+    order: 80
+}
+.vvp-quality {
+    order: 90
+}
+.vvp-fullscreen {
+    order: 100
+}

@@ -1,0 +1,6 @@
+// Resize anything 可变宽高
+
+@mixin resizable($direction) {
+  resize: $direction; // Options: horizontal, vertical, both
+  overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible` 出发BFC
+}

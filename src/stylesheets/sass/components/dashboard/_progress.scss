@@ -1,0 +1,58 @@
+//
+// Progress
+// --------------------------------------------------
+
+.vvp-progress,
+.vvp-progress-track,
+.vvp-progress-buffer,
+.vvp-progress-played,
+.vvp-progress-handle,
+.vvp-progress-seek,
+.vvp-progress-mini-track,
+.vvp-progress-mini-load,
+.vvp-progress-mini-played {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include size(100%, 100%)
+}
+.vvp-progress,
+.vvp-progress-mini {
+    @include size(100%, 1em);
+    background: $progress-video-bg
+}
+.vvp-progress-track,
+.vvp-progress-mini-track  {
+    background: $progress-video-track
+}
+.vvp-progress-buffer,
+.vvp-progress-mini-buffer {
+    background: $progress-video-buffer
+}
+.vvp-progress-played,
+.vvp-progress-mini-played {
+    background: $progress-video-played
+}
+.vvp-progress-handle{
+    background: $color-lighter;
+    border: 0.3em solid $progress-video-played;
+    border-radius: 1.3em;
+    box-shadow: 0.1em 0.1em $color-dark;
+    top: -0.6em;
+    cursor: pointer;;
+    @include size(2em, 2em)
+}
+
+//
+// Progress mini
+// --------------------------------------------------
+
+.vvp-progress-mini {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    @include size(100%, 0.3em)
+}
+.vvp-progress-mini {
+    @include hide-display()
+}
