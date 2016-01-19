@@ -1,4 +1,11 @@
-.eslintrc
 {
-    "extends": "eslint"
+  "rules": {
+    "indent": 2,
+    "no-unused-vars": 2,
+    "no-alert": 1
+  },
+    "env": {
+        "browser": true,
+        "node": true
+    }
 }
