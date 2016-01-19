@@ -36,7 +36,6 @@ gulp.task('sass', function() {
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9',
             'opera 12.1', 'ios 6', 'android 4'))
         .pipe(gulp.dest('dev/stylesheets'))
-        .pipe(gulp.dest('test/stylesheets')) // <-- 临时使用
         .pipe(rename({
             suffix: '.min'
         }))
@@ -112,10 +111,8 @@ gulp.task('assets', function() {
         // 首次使用开启
         .pipe(gulp.dest('dev/assets'))
         .pipe(gulp.dest('dist/assets'))
-        .pipe(gulp.dest('test/assets')) // <-- 临时使用
         .pipe(changed('dev/assets'))
         .pipe(changed('dist/assets'))
-        .pipe(changed('test/assets')) // <-- 临时使用
         .pipe(notify({
             message: 'Assets task complete'
         }));
