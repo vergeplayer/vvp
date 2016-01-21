@@ -1,3 +1,9 @@
 .vvp-localization
-    button(title="国语")
+    button(aria-haspopup="true", aria-owns="vvp-local-panel", aria-expanded="false", title="本地化")
         span.vvp-txt-btn 国语
+    .vvp-panel(id="vvp-local-panel", aria-hidden="true")
+        ul(role="menu")
+            li(role="menuitem")
+                button(class="vvp-selected", data-vid="XNDc4ODU5MjY4", data-language="英语", data-language-code="en", role="menuitemradio", aria-selected="true") 英语 
+            li(role="menuitem")
+                button(data-vid="XNDI5MzIxMDY0", data-language="国语", data-language-code="guoyu", role="menuitemradio", aria-selected="false") 国语
