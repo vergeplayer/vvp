@@ -1,6 +1,9 @@
 .vvp-quality
-    button(title="高清") 
+    button(title="清晰度", aria-haspopup="true", aria-owns="vvp-quality-panel", aria-expanded="false", title="本地化") 
         span.vvp-txt-btn 高清
-    .vvp-panel
-        button(class = "vvp-selected", data-vid = "XNDc4ODU5MjY4", data-language = "英语", data-language-code ="en") 英语 
-        button(data-vid = "XNDI5MzIxMDY0", data-language = "国语", data-language-code = "guoyu") 国语
+    .vvp-panel(id="vvp-quality-panel", aria-hidden="true")
+        ul(role="menu")
+            li(role="menuitem")
+                button(class="vvp-selected", role="menuitemradio", aria-selected="true") 超清 
+            li(role="menuitem")
+                button(role="menuitem", aria-selected="false", role="menuitemradio", aria-selected="false") 高清
