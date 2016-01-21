@@ -23,7 +23,7 @@
     "gulp-istanbul": "^0.10.3",
     "gulp-jade": "^1.1.0",
     "gulp-jasmine": "^2.2.1",
-    "gulp-livereload": "~3.8.0",
+    "gulp-livereload": "^3.8.1",
     "gulp-newer": "^1.1.0",
     "gulp-notify": "~2.2.0",
     "gulp-rename": "~1.2.2",
@@ -35,6 +35,7 @@
     "jade2script": "0.0.6",
     "jasmine-reporters": "^2.1.1",
     "jasmine-spec-reporter": "^2.4.0",
+    "lodash": "^4.0.0",
     "stream-combiner2": "^1.1.1",
     "streamqueue": "^1.1.1",
     "through2": "^2.0.0"

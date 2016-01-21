@@ -1,0 +1,8 @@
+//
+// Contextmenu
+// --------------------------------------------------
+
+.vvp-contextmenu {
+    @include display-flex();
+    @include hide-display()
+}

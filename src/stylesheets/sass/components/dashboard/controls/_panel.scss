@@ -8,19 +8,27 @@
     bottom: 4em;
     padding: 0.2em;
     background: rgba(0 , 0 , 0 , 0.7);
-    flex-direction: column;
-    @include size(100%, auto)
-    @include display-flex()
+    @include size(100%, auto);
+    @include hide-display()
+    ul {
+        padding:0;
+        flex-direction: column;
+        @include size(100%, auto);
+        @include display-flex()
+    }
+    li {
+        list-style: none;
+        margin-bottom: 0.5em;
+        @include size(100%, 2.4em)
+        &:last-child{
+            margin:0
+        }
+    }
     button {
         color: $color-lightest;
         display: block;
         font-size: 1.2em;
-        margin-bottom: 0.5em;
         @include size(100%, 2.4em)
-
-        &:last-child{
-            margin:0
-        }
     }
     .vvp-selected {
         color: $color-darker;
