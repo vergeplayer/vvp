@@ -1,32 +1,30 @@
 /**
- * Created by zhengzk on 2016/1/18.
- */
-
-//拓展自身api
-//vvp.component.VvpPlayBigBtn.expand({
-//
-//});
-
-//处理与player相关部分
-vvp.Player.expand({
+ * VvpPlayBigBtn
+ * Copyright 2016, vvp-play-big-btn.js
+ * MIT Licensed
+ * @since 2016/1/18.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
+vvp.component.VvpPlayBigBtn.expand({
     /**
-     * 初始化大的播放按钮
-     * @param playerBtn
+     * implements
+     * 处理事件
+     * @param options
      * @private
      */
-    _initPlayBigBtn:function(playerBtn){
-        if(!playerBtn) return;
+    _initEvent:function(options){
         var own = this;
-        playerBtn.root.bind('click', function () {
-            own.play();
+        own.root.bind('click', function () {
+            own.trigger('play');
         });
 
         own.bind(['onError','onPlay','onPlaying','onWaiting'],function(){
-            playerBtn.root.hide();
+            own.root.hide();
         });
 
         own.bind('onPause', function () {
-            playerBtn.root.show();
+            own.root.show();
         });
     }
 });

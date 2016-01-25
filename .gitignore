@@ -13,3 +13,4 @@ build/*
 
 .cache
 verge.mp4
+*.bak

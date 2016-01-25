@@ -1,45 +1,27 @@
 /**
- * Created by zhengzk on 2016/1/17.
- */
+ * Player
+ * Copyright 2016, player.js
+ * MIT Licensed
+ * @since 2016/1/17.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
 //拓展自身api方法
-//vvp.component.Player.expand({
-//
-//});
-
-//处理与player相关部分
-vvp.Player.expand({
+vvp.component.Player.expand({
     /**
-     * 初始化component.Player
-     * @param player
+     * implements
+     * 处理事件
+     * @param options
      * @private
      */
-    _initPlayer:function(player){
-        if(!player) return;
+    _initEvent:function(options){
         var own = this;
-        var poster = player.eles['poster'];
-        var loading = player.eles['loading'];
-        //var advert = player.eles['advert'];
-        //var contextmenu = player.eles['contextmenu'];
-        var dashboard = player.eles['dashboard'];
-        var bigbtn = player.eles['vvpplaybigbtn'];
-        if(poster){
-            this._initPoster(poster);
-        }
-        if(loading){
-            this._initLoading(loading)
-        }
-        if(dashboard){
-            this._initDashboard(dashboard);
-        }
-        if(bigbtn){
-            this._initPlayBigBtn(bigbtn);
-        }
-
         own.one('onPlay',function(){
-            player.root.bind('click', function (e) {
+            var player = this;
+            own.root.bind('click', function (e) {
                 var ele = e.target || e.srcElement;
-                if(ele == player.root[0]){
-                    own.controls(!own.controls());//toggle
+                if(ele == own.root[0]){
+                    player.controls(!player.controls());//toggle
                 }
             });
         });

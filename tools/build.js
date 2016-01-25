@@ -41,31 +41,25 @@ var parseViewComponent = function (options,mapping) {
         var _options = utils.merge(options, {
             name: _name,
             translate: function (data, name) {
-                //只生成view方法 并将方法绑定到指定对象
-                var _target = mapping[fileName];
-                if(_target){
-                    return _target + ".expand({\n"
-                        +"\t _createView:"
-                        + data
-                        + "});\n";
-                }
-                return utils.translate(data, name,fileName);
+                return utils.translate(data, name,mapping[fileName]);
             },
-            processModule: function (node,name) {
+            processModule: function (node,varName) {
                 //_path = path.dirname(path.dirname(file.relative) + "/" + _path);
                 //return "view."+_path.replace(/\//g,'.');
                 var _m_fname = path.basename(node.file.path,".jade");
-                var _target = mapping[_m_fname];
-                if(_target){
-                    return _target;
+                var _m_name =  jade2script.parseName(mapping[_m_fname] || "vvp.component." + _m_fname);
+                if(mapping[fileName]){
+                    return 'var ' + varName + " = new "+ _m_name + "({player:this});"
+                        + "this.eles['" + _m_fname.replace(/-/g,'') + "'] = " + varName +';';
                 }
-                return "vvp.component." + _m_fname;
+                return 'var ' + varName + " = new "+ _m_name + "({player:options.player});\n"
+                    + "this.eles['" + _m_fname.replace(/-/g,'') + "'] = " + varName +';';
             }
         });
 
         return jade2script.compile(data, _options);
     });
-}
+};
 
 /**
  * 处理组件

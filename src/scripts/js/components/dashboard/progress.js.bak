@@ -6,6 +6,7 @@
  * @modify 2016/1/25.
  * @author zhengzk
  **/
+//拓展组件自身api
 vvp.component.Progress.expand({
     /**
      * implements
@@ -20,6 +21,23 @@ vvp.component.Progress.expand({
             dur = this.duration();
         });
         var buf = 0;
+        var slider = new Slider({
+            parent: own.handle[0],
+            root: own.root[0],
+            cb_move: function(cl,l,ml){
+                console.log('slider',arguments);
+                //var val = parseFloat(l/ml).toFixed(2);
+                //own._setVal(val,l);
+                //cb_change(val);
+            }
+        });
+        var hw = own.handle.css('width');
+        own.root.bind('click', function (e) {
+            var left = Slider.getClientLeft(this);
+            var l = e.clientX  - left - hw/2;
+            console.log(left,l);
+            slider.move(l);
+        });
 
         own.bind('onProgress',function(){
             var video = this.video;

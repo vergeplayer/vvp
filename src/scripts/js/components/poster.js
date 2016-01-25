@@ -1,29 +1,30 @@
 /**
- * Created by zhengzk on 2016/1/18.
- */
+ * Poster
+ * Copyright 2016, poster.js
+ * MIT Licensed
+ * @since 2016/1/18.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
 
 //拓展组件自身api
 vvp.component.Poster.expand({
+    /**
+     * implements
+     * 处理事件
+     * @param options
+     * @private
+     */
+    _initEvent:function(options){
+        var own = this;
+        own.one(['onPlay', 'onError'], function () {
+            own.root.hide();
+        });
+    },
     /**
      * 设置poster image url
      */
     setSrc:function(){
 
-    }
-});
-
-//处理组件与player相关部分
-vvp.Player.expand({
-    /**
-     * 初始化poster
-     * @param poster
-     * @private
-     */
-    _initPoster:function(poster){
-        if(!poster) return;
-        var own = this;
-        this.one(['onPlay', 'onError'], function () {
-            poster.root.hide();
-        });
     }
 });

@@ -1,9 +1,9 @@
 /**
  * gulp 自定义任务
- * Copyright 2015, player.js
+ * Copyright 2015, utils.js
  * MIT Licensed
  * @since 2015/9/8.
- * @modify 2015/9/8.
+ * @modify 2016/1/25.
  * @author zhengzk
  **/
 var hasOwnProp = Object.prototype.hasOwnProperty,
@@ -17,7 +17,6 @@ var hasOwnProp = Object.prototype.hasOwnProperty,
 function modify(modifier) {
     return through2.obj(function (file, encoding, cb) {
         var content = modifier(String(file.contents),file);
-        //var content = modifier(String(file.contents));
         file.contents = new Buffer(content);
         //this.push(file);
         cb(null, file);
@@ -26,12 +25,15 @@ function modify(modifier) {
 
 /**
  * 转换数据
- **/
-var paseData = function (data,options) {
+ * @param data
+ * @param options
+ * @returns {string}
+ */
+function paseData(data,options) {
     options = options || {};
     var name = options.name || pkg.name;
     var version = options.version || pkg.version;
-    var path = options.path || (name + "/" + version)
+    var path = options.path || (name + "/" + version);
     var data = data
             .replace(/@VERSION/g,version)
             .replace(/@NAME/g,name)
@@ -39,11 +41,13 @@ var paseData = function (data,options) {
     return data;
 }
 
-
 /**
- * 添加版本信息等
- **/
-var addNote = function (data,options) {
+ * 添加注释信息
+ * @param data
+ * @param options
+ * @returns {string}
+ */
+function addNote(data,options) {
     options = options || {};
     //var timeStr = getCurrentTime();
     var timeStr = ( new Date() ).toISOString().replace( /:\d+\.\d+Z$/, "Z" );
@@ -57,6 +61,46 @@ var addNote = function (data,options) {
         //+ '}('+ global +'));';
 }
 
+/**
+ * 处理组件转换
+ * @param data
+ * @param name
+ * @param target
+ * @returns {string}
+ */
+function translate(data,name,target){
+    var pre = "";
+    if(target){
+        pre = target + ".expand({\n"; //只生成view方法 并将方法绑定到指定对象
+    }else{
+        pre = name + " = vvp.Component.extend({\n";
+    }
+    return pre
+        +"\t _createView:"
+        + data
+        + "});\n";
+    //+ name.replace("view","component") + " = " + name + ";\n";
+}
+
+/**
+ * merge
+ * @param first
+ * @param second
+ * @returns {*}
+ */
+function merge(first, second) {
+    if (!second) {
+        return first;
+    }
+    for (var key in second) {
+        if (hasOwnProp.call(second, key)) {
+            first[key] = second[key];
+        }
+    }
+    return first;
+}
+
+//exports
 exports.paseData = function(options){
     return modify(function(str){
         return paseData(str,options);
@@ -69,35 +113,8 @@ exports.addNote = function(options){
     });
 };
 
-exports.modify = function(cb){
-    return modify(cb);
-};
-
-exports.merge = function (first, second) {
-    if (!second) {
-        return first;
-    }
-    for (var key in second) {
-        if (hasOwnProp.call(second, key)) {
-            first[key] = second[key];
-        }
-    }
-    return first;
-};
-
-function translate(data,name){
-    return name + " = vvp.CoreObject.extend({\n"
-        +"\t init:function(options){\n"
-        +"\t\t this.options = options || {};\n"
-        +"\t\t this._createView(this.options);\n"
-        +"\t},\n"
-        +"\t _createView:"
-        + data
-        + "});\n";
-        //+ name.replace("view","component") + " = " + name + ";\n";
-}
+exports.modify = modify;
+exports.translate = translate;
+exports.merge = merge;
 
 
-exports.translate = function(data,name){
-    return translate(data,name);
-};

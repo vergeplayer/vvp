@@ -4,11 +4,15 @@
  * MIT Licensed
  * @class
  * @since 2015/9/2.
- * @modify 2015/10/25.
+ * @modify 2016/01/25.
  * @author zhengzk
  **/
 vvp.Player = vvp.VideoPlayer.extend({
-    //player -->{video videobutton loading dashboard}
+    /**
+     * Constructor
+     * @param target
+     * @param options
+     */
     init: function (target, options) {
         //初始化参数
         options = vQ.merge({
@@ -36,7 +40,6 @@ vvp.Player = vvp.VideoPlayer.extend({
         //创建必要节点
         this._createView();
         vQ(target).append(this.fragment);
-        own._initEles();//处理组件事件
         if(!this.video || !this.root){
             //模板中未指定video
             throw new  Error("Need Video and Root Target Node");
@@ -101,29 +104,6 @@ vvp.Player = vvp.VideoPlayer.extend({
             this._super();
         }
         return this;
-    },
-    /**
-     * 初始化子组件
-     * @private
-     */
-    _initEles: function() {//耦合？打包时自动转换实现？
-        var own = this;
-        var stream = this.eles['stream'];
-        var trigger = this.eles['trigger'];
-        var player = this.eles['player'];
-        //var plugin = this.eles['plugin'];
-        //var service = this.eles['service'];
-        //var stage = this.eles['stage'];
-
-        if(stream){
-            own._initStream(stream);
-        }
-        if(trigger){
-            own._initTrigger(trigger);
-        }
-        if(player){
-            own._initPlayer(player);
-        }
     }
     //_createPrompt:function(){
     //    this.bind('onError',function(){

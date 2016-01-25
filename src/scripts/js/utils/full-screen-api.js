@@ -5,6 +5,7 @@
  * @since 2015/9/2.
  * @modify 2015/9/30.
  * @author zhengzk
+ * 参照video.js实现:https://github.com/videojs/video.js/blob/master/src/js/fullscreen-api.js
  **/
 (function () {
 
@@ -59,7 +60,7 @@
     var specApi = apiMap[0];
     var browserApi;
 
-// determine the supported set of functions
+    //确定使用的方法/determine the supported set of functions
     for (var i = 0; i < apiMap.length; i++) {
         // check for exitFullscreen function
         if (apiMap[i][1] in document) {
@@ -68,7 +69,8 @@
         }
     }
     var fsApi = {};
-// map the browser API names to the spec API names
+
+   //根据确定的方法映射使用的方法名称/map the browser API names to the spec API names
     if (browserApi) {
         for (var j = 0; j < browserApi.length; j++) {
             fsApi[specApi[j]] = browserApi[j];
