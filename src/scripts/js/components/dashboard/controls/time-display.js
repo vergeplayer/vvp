@@ -1,8 +1,28 @@
 /**
- * Created by zhengzk on 2016/1/18.
- */
-//拓展组件自身api
+ * TimeDisplay
+ * Copyright 2016, time-display.js
+ * MIT Licensed
+ * @since 2016/1/18.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
 vvp.component.TimeDisplay.expand({
+    /**
+     * implements
+     * 处理事件
+     * @param options
+     * @private
+     */
+    _initEvent:function(options){
+        var own = this;
+        own.one('onDurationChange',function(){
+            //this == player
+            own.setTime(this.currentTime(),this.duration());
+        });
+        own.bind('onTimeUpdate',function(){
+            own.setTime(this.currentTime());
+        });
+    },
     /**
      * 设置时间面板
      * @param curr
@@ -22,23 +42,5 @@ vvp.component.TimeDisplay.expand({
                 }
             }
         }
-    }
-});
-
-//处理组件与player相关部分
-vvp.Player.expand({
-    /***
-     * 初始化 TimeDisplay
-     * @param timeDisplay
-     * @private
-     */
-    _initTimeDisplay:function(timeDisplay){
-        var own = this;
-        own.one('onDurationChange',function(){
-            timeDisplay.setTime(own.currentTime(),own.duration());
-        });
-        own.bind('onTimeUpdate',function(){
-            timeDisplay.setTime(own.currentTime());
-        });
     }
 });

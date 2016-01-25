@@ -1,19 +1,19 @@
 /**
- * Created by zhengzk on 2016/1/18.
- */
-//拓展自身api
-//vvp.component.stream.expand({
-//
-//});
-
-//处理与player相关部分
-vvp.Player.expand({
+ * Stream
+ * Copyright 2016, stream.js
+ * MIT Licensed
+ * @since 2016/1/18.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
+vvp.component.Stream.expand({
     /**
-     * 初始化Stream 设置player的video
-     * @param loading
+     * implements
+     * 处理事件
+     * @param options
      * @private
      */
-    _initStream:function(stream){
-        this.video = this.eles['stream'].video[0];
+    _initEvent:function(options){
+        options.player.video = this.video[0];
     }
 });

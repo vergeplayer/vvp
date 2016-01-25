@@ -1,9 +1,38 @@
 /**
- * Created by zhengzk on 2016/1/12.
- */
+ * 播放按钮组件 / the PlayBtn Component
+ * Copyright 2016, play-btn.js
+ * MIT Licensed
+ * @since 2016/1/12.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
 
 //拓展组件自身api
 vvp.component.PlayBtn.expand({
+    /**
+     * overwrite implements
+     * 处理事件
+     * @param options
+     * @private
+     */
+    _initEvent:function(options){
+        var own = this;
+        var player = options.player;
+        own.btn.bind('click', function () {
+            if(!own.isPlaying){
+                player.play();
+            }else{
+                player.pause();
+            }
+        });
+
+        own.bind(['onPlay', 'onPlaying'], function () {
+            own.play(!this.paused());
+        });
+        own.bind(['onEnded', 'onError', 'onPause'], function () {
+            own.play(false);
+        });
+    },
     isPlaying: false,
     /**
      * 设置播放状态
@@ -20,7 +49,11 @@ vvp.component.PlayBtn.expand({
         this._setStyle(this.isPlaying);
         return this.isPlaying;
     },
-    //处理播放按钮展现样式
+    /**
+     * 处理播放按钮展现样式
+     * @param isPlaying
+     * @private
+     */
     _setStyle: function (isPlaying) {
         if (isPlaying) {//播放状态 显示为暂停按钮
             this.btn.attr('role', 'pause');
@@ -34,29 +67,3 @@ vvp.component.PlayBtn.expand({
     }
 });
 
-//处理组件与player相关部分
-vvp.Player.expand({
-    /**
-     * 初始化playbtn
-     * @private
-     */
-    _initPlayBtn: function (playBtn) {
-        var own = this;
-        playBtn.btn.bind('click', function () {
-            playBtn.play();
-            own.play(playBtn.isPlaying);
-            if (playBtn.isPlaying) {
-                own.play();
-            } else {
-                own.pause();
-            }
-        });
-
-        own.bind(['onPlay', 'onPlaying'], function () {
-            playBtn.play(!own.paused());
-        });
-        own.bind(['onEnded', 'onError', 'onPause'], function () {
-            playBtn.play(false);
-        });
-    }
-});

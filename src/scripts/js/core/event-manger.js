@@ -3,11 +3,14 @@
  * Copyright 2015, event-manger.js
  * MIT Licensed
  * @since 2015/8/24.
- * @modify 2015/9/17.
+ * @modify 2016/1/25.
  * @author zhengzk
  **/
-
 verge.EventManager = vvp.CoreObject.extend({
+    /**
+     * Constructor
+     * @param data
+     */
     init:function(data){
         this._guid = 0;
         this._handlers = {};
@@ -19,16 +22,18 @@ verge.EventManager = vvp.CoreObject.extend({
             });
         }
     },
-    /***
-     * 为指定的事件类型绑定方法
-     * @param type String 事件类型
-     * @param handle Function 事件方法
+    /**
+     * Method
+     * 为指定的事件类型绑定执行方法
+     * @param type {String|Array} 事件类型
+     * @param handler {Function} 事件方法
+     * @param context {Context} 上下文环境
+     * @returns {*}
      */
     bind:function(type,handler,context){
         var own = this;
         if (vQ.isArray(type)) {
-            return own._handleMultipleEvents.apply(own,[arguments.callee].concat(slice.call(arguments)));
-            //return own._handleMultipleEvents(arguments.callee,type, handler);
+            return own._handleMultipleEvents.apply(own,[own.bind].concat(slice.call(arguments)));
         }
 
         if (!handler.$$guid) {
@@ -46,15 +51,18 @@ verge.EventManager = vvp.CoreObject.extend({
         // store the event handler in the hash table
         handlers[handler.$$guid] = handler;
     },
-    /***
-     * 移除已添加的指定事件类型的方法
-     * @param type String 事件类型
-     * @param handle Function 事件方法
+    /**
+     * Method
+     *移除已添加的指定事件类型的方法
+     * @param type {String|Array} 事件类型
+     * @param handler {Function} 事件方法
+     * @param context {Context} 上下文环境
+     * @returns {*}
      */
     unbind:function(type,handler,context){
         var own = this;
         if (vQ.isArray(type)) {
-            return own._handleMultipleEvents.apply(own,[arguments.callee].concat(slice.call(arguments)));
+            return own._handleMultipleEvents.apply(own,[own.unbind].concat(slice.call(arguments)));
             //return own._handleMultipleEvents(arguments.callee,type, handler);
         }
         var handlers = own._handlers[type];
@@ -75,51 +83,43 @@ verge.EventManager = vvp.CoreObject.extend({
         }
     },
     /**
-     * 绑定只执行一次的事件
-     * @param  {Element|Object}   elem Element or object to
-     * @param  {String|Array}   type
-     * @param  {Function} fn
-     * @private
+     * Method
+     * 绑定只执行一次的事件类型的方法
+     * @param type {String|Array} 事件类型
+     * @param handler {Function} 事件方法
+     * @param context {Context} 上下文环境
+     * @returns {*}
      */
     one:function(type, handler,context) {
         var own = this;
         var args = slice.call(arguments);
         if (vQ.isArray(type)) {
             return own._handleMultipleEvents.apply(own,[own.one].concat(args));
-            //return own._handleMultipleEvents(arguments.callee, type, handler);
         }
 
+        //更换fun 处理解绑
+        //context 已经处理所以不用再传给bind来处理了
         var func = function(){
             own.unbind(type, func);
-            handler.apply(context || handler, arguments);
+            handler.apply(context || handler, arguments);//支持不定个数的参数
         };
 
         // copy the guid to the new function so it can removed using the original function's ID
         func.$$guid = handler.$$guid = handler.$$guid || own._guid++;
         own.bind(type, func);
-
-        //var func = function(){
-        //    own.unbind.apply(own,args);
-        //    handler.apply(context || handler, arguments);
-        //};
-        ////args = [type, func].concat(args.slice(2));//更换fun 这样支持不定个数的参数
-        //args = [type, func];//context 已经处理所以不用再传给bind来处理了
-        //
-        //// copy the guid to the new function so it can removed using the original function's ID
-        //func.$$guid = handler.$$guid = handler.$$guid || own._guid++;
-        //own.bind.apply(own,args);
     },
     /**
+     * Method
      * 触发指定事件类型的所有方法
-     * @param type String 事件类型
-     * @param args
-     * @param context
+     * @param type {String|Array} 事件类型
+     * @param args {Array} 参数列表
+     * @param context {Context} 上下文环境
      * @returns {*}
      */
     trigger:function(type,args,context){
         var own = this;
         if (vQ.isArray(type)) {
-            return own._handleMultipleEvents.apply(own,[arguments.callee].concat(slice.call(arguments)));
+            return own._handleMultipleEvents.apply(own,[own.trigger].concat(slice.call(arguments)));
             //return own._handleMultipleEvents(arguments.callee,type,args,context);
         }
 
@@ -133,14 +133,14 @@ verge.EventManager = vvp.CoreObject.extend({
     },
     /**
      * 事件参数类型多个的处理
-     * @param fn Function
-     * @param types Array
-     * @param callback Function
+     * @param fn {Function} 要执行的事件方法
+     * @param types {Array} 方法名称集合
+     * @params more
      * @private
      */
     _handleMultipleEvents:function(fn,types){
         var own = this;
-        var args = slice.call(arguments,2);//.slice(2);//动态截取fn所需参数
+        var args = slice.call(arguments,2);//动态截取fn所需参数
         vQ.each(types,function(inx,type){
             fn.apply(own,[type].concat(args));
         });

@@ -1,20 +1,20 @@
 /**
- * Created by zhengzk on 2016/1/18.
- */
-
+ * ProgressMini
+ * Copyright 2016, progress-mini.js
+ * MIT Licensed
+ * @since 2016/1/18.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
 //拓展组件自身api
 vvp.component.ProgressMini.expand({
-
-});
-
-//处理组件与player相关部分
-vvp.Player.expand({
     /**
-     * 初始化ProgressMini
-     * @param ProgressMini
+     * implements
+     * 处理事件
+     * @param options
      * @private
      */
-    _initProgressMini:function(progressMini){
+    _initEvent:function(options){
 
     }
 });

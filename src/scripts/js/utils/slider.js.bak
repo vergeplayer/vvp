@@ -1,0 +1,100 @@
+/**
+ * Created by zhengzk on 2016/1/21.
+ */
+//拖拽移动
+var Slider = function(_cfg){
+    this.cfg = vQ.merge({
+        root:null,
+        parent:null,
+        cb_move:null
+    },_cfg);
+    this._init();
+};
+
+Slider.prototype = {
+    _init:function(){
+        var own = this;
+        var root = own.cfg.root;
+        own._initMoveEle(root,function(e){
+            var parent = own.cfg.parent || root.offsetParent;
+            var left = Slider.getClientLeft(root.offsetParent);
+            //var l = e.clientX + parent.scrollLeft -  root.offsetParent.offsetLeft - ($(root).width() / 2);//计算新的left值
+            var l = e.clientX +  parent.scrollLeft - left - parseInt(vQ(root).css('width')) / 2;
+            own.move(l);
+        });
+    },
+    move:function(l,flag){
+        flag = flag || false;
+        var own = this;
+        var root = own.cfg.root;
+        //var parent = own.cfg.parent || root.offsetParent;
+        var min = 0;
+        var pw = parseInt(vQ(own.cfg.parent || root.parentNode).css('width'));
+        var max = pw - parseInt(vQ(root).css('width')); //move过程中宽度存在发生变化的情况 因此需 每次都重新计算
+        l = l < min ? min :( l > max ? max : l );
+        var pre = root.offsetLeft;
+        root.style.left = l + 'px';
+        var cb_move = own.cfg.cb_move;
+        if ('function' == typeof cb_move && !flag) {
+            cb_move(l-pre,l,max);//偏移量 当前left 总长
+        }
+        return l;
+    },
+    _initMoveEle:function(ele,cb_move){
+        var own = this;
+        var win = document;
+        if('undefined' != typeof window.onmousedown){
+            win = window;
+        }
+        //var isObserve = false;//move事件是否绑定
+        vQ(ele).bind('mousedown', function (e) {
+            //if(!isObserve) {
+            vQ(win).bind('mousemove', cb_move);
+            Slider.setSelect(true);
+            //isObserve = true;
+            //}
+        });
+
+        vQ(win).bind('mouseup', function (e) {
+            //if(isObserve) {
+            vQ(win).unbind('mousemove', cb_move);
+            Slider.setSelect(false);
+            //isObserve = false;
+            //}
+        });
+    }
+};
+
+/***
+ * 获取元素在页面中的clientLeft
+ * @param ele
+ * @returns {options.offsetLeft|*}
+ */
+Slider.getClientLeft = function(ele){//有bug 后续修复
+    if(null == ele){
+        return ;
+    }
+    var left = ele.offsetLeft;
+    var parentNode = ele.offsetParent;
+    while(true){
+        if(null == parentNode){
+            break;
+        }
+        left = left + parentNode.offsetLeft - parentNode.scrollLeft;
+        if(parentNode == document.body){
+            break;
+        }
+        parentNode = parentNode.offsetParent;
+    }
+    return left;
+};
+
+Slider.setSelect = function(flag){
+    if(flag){
+        document.onselectstart = function(){
+            return false;
+        }
+    }else{
+        document.onselectstart = null;
+    }
+};

@@ -36,6 +36,7 @@
             "utils/**/*.js",
             "video-player.js",
             "player.js",
+            "component.js",
             "VIEW",
             "components/**/*.js",
             "plugins/**/*.js",

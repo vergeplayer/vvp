@@ -1,33 +1,32 @@
 /**
- * Created by zhengzk on 2016/1/17.
- */
-//拓展自身api
-//vvp.component.Trigger.expand({
-//
-//});
-
-//处理与player相关部分
-vvp.Player.expand({
+ * Trigger
+ * Copyright 2016, trigger.js
+ * MIT Licensed
+ * @since 2016/1/17.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
+vvp.component.Trigger.expand({
     /**
-     * 初始化trigger
-     * @param trigger
+     * implements
+     * 处理事件
+     * @param options
      * @private
      */
-    _initTrigger: function (trigger) {
-        //if(!trigger) return;
+    _initEvent: function (options) {
         var own = this;
         own.one('onPlay',function(){
-            trigger.root.bind('click', function () {
-                //own.dashboard.toggle();
-                own.controls(!own.controls());//toggle
+            var player = this;
+            own.root.bind('click', function () {
+                player.controls(!player.controls());//toggle
             });
 
             own.bind(['onPlay','onPlaying'], function () {
-                trigger.root.show();
+                own.root.show();
             });
 
             own.bind('onPause', function () {
-                trigger.root.hide();
+                own.root.hide();
             });
         });
     }

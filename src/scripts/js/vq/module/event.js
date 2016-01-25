@@ -21,7 +21,7 @@
             var own = this;
 
             //非DOM元素不处理 handler 非function 不处理
-            if (!(1 == element.nodeType || element.nodeType == 9 || !vQ.isFunction(handler))) {
+            if (!(1 == element.nodeType || element.nodeType == 9 || element === window) || !vQ.isFunction(handler)) {
                 return;
             }
 
@@ -76,7 +76,7 @@
         unbind: function (element, type, handler) {
             var own = this;
             //非DOM元素不处理 handler 非function 不处理
-            if (!(1 == element.nodeType || element.nodeType == 9) || !vQ.isFunction(handler)) {
+            if (!(1 == element.nodeType || element.nodeType == 9 || element === window) || !vQ.isFunction(handler)) {
                 return;
             }
 
@@ -121,7 +121,7 @@
         one: function (element, type, handler, context) {
             var own = this;
             //非Dom元素不处理
-            if (!(1 == element.nodeType || element.nodeType == 9 || !vQ.isFunction(handler))) {
+            if (!(1 == element.nodeType || element.nodeType == 9 || element === window)|| !vQ.isFunction(handler)) {
                 return;
             }
             //获取传入参数

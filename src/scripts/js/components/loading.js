@@ -1,26 +1,26 @@
 /**
- * Created by zhengzk on 2016/1/17.
- */
-//拓展loading自身api
-//vvp.component.loading.expand({
-//
-//});
-
-//处理loading与player相关部分
-vvp.Player.expand({
+ * Loading
+ * Copyright 2016, loading.js
+ * MIT Licensed
+ * @since 2016/1/17.
+ * @modify 2016/1/25.
+ * @author zhengzk
+ **/
+vvp.component.Loading.expand({
     /**
-     * 初始化loading按钮
-     * @param loading
+     * implements
+     * 处理事件
+     * @param options
      * @private
      */
-    _initLoading:function(loading){
-        if(!loading) return;
-        this.bind(['onPlay','onPlaying','onError','onPause'], function () {
-            loading.root.hide();
+    _initEvent:function(options){
+        var own = this;
+        own.bind(['onPlay','onPlaying','onError','onPause'], function () {
+            own.root.hide();
         });
 
-        this.bind('onWaiting', function () {
-            loading.root.show();
+        own.bind('onWaiting', function () {
+            own.root.show();
         });
     }
 });
