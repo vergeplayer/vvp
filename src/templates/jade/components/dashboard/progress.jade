@@ -1,6 +1,6 @@
-.vvp-progress(vvp_id="root")
+.vvp-progress(vvp_id="root" role="progressbar", aria-valuenow="0", aria-valuemax="100", aria-valuemin="0", aria-label="播放进度条", aria-valuetext="视频时间10分11秒")
     .vvp-progress-track
-    .vvp-progress-buffer(vvp_id="buffer" style = "width:0px;")
-    .vvp-progress-played(vvp_id="played" style = "width:0px;")
-    .vvp-progress-handle(vvp_id="handle")
-    .vvp-progress-seek
+    .vvp-progress-buffer(vvp_id="buffer", style="width:220px", role="progressbar", aria-valuenow="0", aria-valuemax="100", aria-valuemin="0", aria-label="缓冲进度8分20秒")
+    .vvp-progress-played(vvp_id="played", style="width:120px", role="progressbar", aria-valuenow="0", aria-valuemax="100", aria-valuemin="0", aria-label="视频已播放0分11秒")
+    .vvp-progress-handle(role="presentation", value="", vvp_id="handle")
+    .vvp-progress-seek(role="presentation", value="")

@@ -10,19 +10,19 @@
     <meta name="description" content="Test vvp in the youku.com/player.youku.com">
     <meta name="revisit-after" content="3 days">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--link(href = 'img/favicon.ico', rel = 'shortcut icon', type = '')-->
+    <!--link(href='img/favicon.ico', rel='shortcut icon', type = '')-->
     <!-- 环境样式可任意添加-->
-    <link href="/dev/stylesheets/vvp.css" rel="stylesheet">
+    <link href="../stylesheets/vvp.css" rel="stylesheet">
     <!-- 环境脚本可任意添加-->
     <!--script(src = bowerpath + 'modernizr/modernizr.js')-->
   </head>
   <body>
     <header class="header"></header>
     <!-- Verge Video Player -->
-    <div id="root" title="" role="Video Player" tabindex="-1" style="width:640px;height:360px" class="vvp">
+    <div id="root" title="Verge Video Player" tabindex="0" aria-label="Verge Video Player" style="width:640px;height:360px" class="vvp">
       <!-- 播放器-->
       <div class="vvp-stream">
-        <video id="video" title="视频"></video>
+        <video id="video" title="视频标题标题标题" tabindex="-1"></video>
       </div>
       <!-- player播放层-->
       <div id="root" class="vvp-player">
@@ -40,28 +40,30 @@
         <!-- 视频加载-->
         <div id="root" class="vvp-loading"></div>
         <!-- 视频截图-->
-        <div id="root" class="vvp-poster"></div>
+        <div id="root" tabindex="-1" class="vvp-poster"></div>
         <!-- 大播放按钮-->
-        <div id="root" class="vvp-play-big-btn"></div>
+        <div aria-hidden="true" class="vvp-super-btn">
+          <button role="button" title="播放" aria-live="polite"></button>
+        </div>
         <!-- 错误信息-->
-        <div class="vvp-error"></div>
+        <div aria-hidden="true" class="vvp-error"></div>
         <!-- 字幕信息-->
         <div class="vvp-subtitles"></div>
         <!-- 控制面板-->
         <div id="root" class="vvp-dashboard">
           <!-- 迷你进度条-->
-          <div class="vvp-progress-mini">
+          <div role="progressbar" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" aria-label="播放进度条" aria-valuetext="当前视频时间10分11秒" class="vvp-progress-mini">
             <div class="vvp-progress-mini-track"></div>
-            <div style="width:220px;" class="vvp-progress-mini-buffer"></div>
-            <div style="width:120px;" class="vvp-progress-mini-played"></div>
+            <div style="width:220px" role="progressbar" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" aria-label="缓冲进度" class="vvp-progress-mini-buffer"></div>
+            <div style="width:120px" role="progressbar" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" aria-label="当前视频已播放0分11秒" class="vvp-progress-mini-played"></div>
           </div>
           <!-- 进度条 -->
-          <div class="vvp-progress">
+          <div role="progressbar" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" aria-label="播放进度条" aria-valuetext="视频时间10分11秒" class="vvp-progress">
             <div class="vvp-progress-track"></div>
-            <div id="buffer" style="width:0px;" class="vvp-progress-buffer"></div>
-            <div id="played" style="width:0px;" class="vvp-progress-played"></div>
-            <div id="handle" class="vvp-progress-handle"></div>
-            <div class="vvp-progress-seek"></div>
+            <div id="buffer" style="width:220px" role="progressbar" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" aria-label="缓冲进度8分20秒" class="vvp-progress-buffer"></div>
+            <div id="played" style="width:120px" role="progressbar" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" aria-label="视频已播放0分11秒" class="vvp-progress-played"></div>
+            <div role="presentation" value="" id="handle" class="vvp-progress-handle"></div>
+            <div role="presentation" value="" class="vvp-progress-seek"></div>
           </div>
           <!-- 视频预览-->
           <!--include ./dashboard/storyboard-->
@@ -70,9 +72,9 @@
             <!-- 播放暂停按钮-->
             <div class="vvp-play-btn">
               <!-- 播放按钮-->
-              <button role="play" id="btn"><i id="bg" class="vvp-ico vvp-ico-youku-play"></i><i id="icon" class="vvp-ico vvp-ico-play"></i></button>
+              <button title="播放" role="button" aria-label="播放" aria-live="polite" id="btn"><i id="bg" class="vvp-ico vvp-ico-youku-play"></i><i id="icon" class="vvp-ico vvp-ico-play"></i></button>
               <!-- 播放暂停-->
-              <!--button(role="pause" style="display:none")-->
+              <!--button(title="暂停", role="button", aria-label="暂停",  aria-live="polite", style="display:none")-->
               <!--    i(class="vvp-ico vvp-ico-pause")
               //svg(xmlns:xlink = "http://www.w3.org/1999/xlink", height = "100%", version = "1.1", viewBox = "0 0 36 36", width="100%")
               //    defs
@@ -80,7 +82,7 @@
               -->
             </div>
             <!-- 视频时间-->
-            <div class="vvp-time-display"><span id="current" class="vvp-time-current">00:00</span><span class="vvp-time-separator">/</span><span id="duration" class="vvp-time-duration">00:00</span></div>
+            <div class="vvp-time-display"><span id="current" class="vvp-time-current">00:00</span><span role="separator" class="vvp-time-separator">/</span><span id="duration" class="vvp-time-duration">00:00</span></div>
             <!-- 声音 -->
             <!--include ./controls/volume-->
             <!-- 下一个 -->
@@ -99,32 +101,62 @@
             <!--include ./controls/speed-->
             <!-- 剧集-->
             <div class="vvp-playshow">
-              <button title="选集"> <span class="vvp-txt-btn">选集</span></button>
+              <button title="选集" aria-ablel="选集" aria-haspopup="true" aria-owns="vpp-playshow-list"><span class="vvp-txt-btn">选集</span></button>
             </div>
             <!-- 本地化-->
             <div class="vvp-localization">
-              <button title="国语"><span class="vvp-txt-btn">国语</span></button>
+              <button aria-haspopup="true" aria-owns="vvp-local-panel" aria-expanded="false" title="本地化"><span class="vvp-txt-btn">国语</span></button>
+              <div id="vvp-local-panel" aria-hidden="true" class="vvp-panel">
+                <ul role="menu">
+                  <li role="menuitem">
+                    <button data-vid="XNDc4ODU5MjY4" data-language="英语" data-language-code="en" role="menuitemradio" aria-selected="true" class="vvp-selected">英语 </button>
+                  </li>
+                  <li role="menuitem">
+                    <button data-vid="XNDI5MzIxMDY0" data-language="国语" data-language-code="guoyu" role="menuitemradio" aria-selected="false">国语</button>
+                  </li>
+                </ul>
+              </div>
             </div>
             <!-- 清晰度-->
             <div class="vvp-quality">
-              <button title="高清"> <span class="vvp-txt-btn">高清</span></button>
-              <div class="vvp-panel">
-                <button data-vid="XNDc4ODU5MjY4" data-language="英语" data-language-code="en" class="vvp-selected">英语 </button>
-                <button data-vid="XNDI5MzIxMDY0" data-language="国语" data-language-code="guoyu">国语</button>
+              <button aria-haspopup="true" aria-owns="vvp-quality-panel" aria-expanded="false" title="清晰度"> <span class="vvp-txt-btn">高清</span></button>
+              <div id="vvp-quality-panel" aria-hidden="true" class="vvp-panel">
+                <ul role="menu">
+                  <li role="menuitem">
+                    <button role="menuitemradio" aria-selected="true" class="vvp-selected">超清 </button>
+                  </li>
+                  <li role="menuitem">
+                    <button role="menuitemradio" aria-selected="false">高清</button>
+                  </li>
+                  <li role="menuitem">
+                    <button role="menuitemradio" aria-selected="false">标清</button>
+                  </li>
+                </ul>
               </div>
             </div>
             <!-- 全屏-->
             <div id="root" class="vvp-fullscreen">
-              <button role="fullscreen"><i id="icon" class="vvp-ico vvp-ico-fullscreen"></i></button>
+              <button title="全屏" role="button" aria-label="全屏" aria-live="polite"><i id="icon" class="vvp-ico vvp-ico-fullscreen"></i></button>
             </div>
           </div>
         </div>
         <!-- 用户信息交互-->
-        <div class="vvp-feedback"></div>
+        <div aria-hidden="true" class="vvp-feedback"></div>
         <!-- 遮罩-->
         <div class="vvp-overlay"></div>
         <!-- 属性信息-->
-        <div class="vvp-contextmenu"></div>
+        <div aria-hidden="true" class="vvp-contextmenu">
+          <ul role="menu">
+            <li role="menuitem">复制视频地址</li>
+            <li role="menuitem">复制当前时间视频地址</li>
+            <li role="menuitem">复制嵌入代码</li>
+            <li role="menuitem">循环播放</li>
+            <li role="menuitem">意见反馈</li>
+            <li role="menuitem">复制错误信息</li>
+            <li role="menuitem">调试面板 </li>
+            <li role="menuitem">关于Verge视频播放器</li>
+          </ul>
+        </div>
       </div>
       <!-- service业务逻辑层-->
       <div class="vvp-service">
@@ -149,5 +181,7 @@
     </div>
     <!--include footer-->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/test/scripts/js/player.js"></script>
+    <script src="/test/scripts/js/test.js"></script>
   </body>
 </html>
