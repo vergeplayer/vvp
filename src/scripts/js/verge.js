@@ -1,9 +1,9 @@
 /**
  * 基础公共方法
- * Copyright 2015, video-player.js
+ * Copyright 2015-2016, verge.js
  * MIT Licensed
  * @since 2015/9/12.
- * @modify 2015/10/25.
+ * @modify 2016/3/16.
  * @author zhengzk
  **/
 /**
@@ -39,6 +39,14 @@ var verge = {
      */
     isDOMElement: function(ele) {
         return ele && ele.nodeType === 1;
+    },
+    /**
+     * 是否是Video元素
+     * @param ele
+     * @returns {*|boolean}
+     */
+    isVideoElement:function(ele){
+      return verge.isDOMElement(ele) && ele.nodeName.toLowerCase() == 'video';
     },
     /**
      * 创建一个DOM元素并转换为vQ对象
@@ -84,13 +92,13 @@ var verge = {
      * @returns {*}
      */
     mapStyle: function(style) {
-        //if (typeof style == "object") return style;
-        //var defs = (style + "").split(";");
-        //style = {};
-        //for (var def in defs) {
-        //    def = defs[def].split(":");
-        //    style[def[0]] = def[1];
-        //}
+        if (typeof style == "object") return style;
+        var defs = (style + "").split(";");
+        style = {};
+        for (var def in defs) {
+            def = defs[def].split(":");
+            style[def[0]] = def[1];
+        }
         return style;
     },
     /**
@@ -168,3 +176,10 @@ var verge = {
 verge.extend = function() {
     vQ.extend.apply(this, arguments);
 };
+
+//统一创建组件的命名空间
+//verge.routes('vvp.view');
+//verge.routes('vvp.component');
+
+module.exports = verge;
+

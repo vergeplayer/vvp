@@ -1,0 +1,30 @@
+/* Fullscreen Styles */
+body {
+  &.vvp-full-window {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    /* Fix for IE6 full-window. http://www.cssplay.co.uk/layouts/fixed.html */
+    overflow-y: auto;
+    .vvp{
+      &.vvp-fullscreen {
+        position: fixed;
+        overflow: hidden;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.vvp{
+  &.vvp-fullscreen {
+    width: 100% !important;
+    height: 100% !important;
+    /* Undo any aspect ratio padding for fluid layouts */
+    padding-top: 0 !important;
+  }
+}

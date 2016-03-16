@@ -7,15 +7,13 @@
 var jsdoc2md = require("jsdoc-to-markdown");
 var through = require("through2");
 
-console.log(jsdoc2md);
-
 function Jsdoc2md(options) {
     return through.obj(function(file, enc, callback) {
         var self = this;
         if (file.isNull()) {
             // Do nothing if no contents
         }
-        console.log(file.relative);
+        //console.log(file.relative);
         if (file.isBuffer()) {
             var buf = new Buffer(0);
             var jsdoc2mdStream = jsdoc2md(options);
@@ -29,7 +27,7 @@ function Jsdoc2md(options) {
                 return callback();
             });
             jsdoc2mdStream.on("error", function(err){
-                console.log(err);
+                //console.log(err);
                 self.emit("error", 'jsdoc-to-markdown', err.message);
             });
             jsdoc2mdStream.end(file.contents);

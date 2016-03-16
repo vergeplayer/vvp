@@ -1,18 +1,26 @@
 /**
  * 外部接口入口
- * Copyright 2015, vvp.js
+ * Copyright 2015-2016, vvp.js
  * MIT Licensed
  * @since 2015/9/24.
- * @modify 2015/10/25.
+ * @modify 20160/3/4.
  * @author zhengzk
  **/
-
 // HTML5 Element Shim for IE8
 if (typeof HTMLVideoElement === 'undefined') {
-    document.createElement('video');
-    document.createElement('audio');
-    document.createElement('track');
+  document.createElement('video');
+  document.createElement('audio');
+  document.createElement('track');
 }
+
+//var global = require("global");
+var browser = require('./base/browser.js'),
+    CoreObject  = require('./base/core-object.js'),
+    VideoPlayer = require('./video-player.js'),
+    Player = require('./player.js'),
+    utils = require('./utils.js');
+
+var players = {};
 
 var vvp = function(selector, options) {
     return new vvp.fn.init(selector, options);
@@ -26,27 +34,40 @@ vvp.fn = {
         if (vQ.isFunction(selector)) {
             //ready 时执行
             own.ready(selector);
+            if(options){
+              log.warn('the selector is not String or Dom Element,Options will not be applied.')
+            }
+
         } else {
             var targets = vQ(selector);
-            //if(targets.length == 0){
-            //    return this;
-            //}
             var Player = this.dispatch();
-            targets.each(function(i, target) {
-                own[i] = new Player(target, options);
-                own.length++;
+            targets.each(function(i, element) {
+                if(element.nodeName){
+                  var player;
+                  if(element.playerId){
+                    player = players[element.playerId];
+                    player.options(options);
+                  }else{
+                    var playerId = utils.guid();
+                    element.playerId = playerId;
+                    player = new Player(element, options);
+                    players[playerId] = player;
+                  }
+                  own[i] = player;
+                  own.length++;
+                }
             });
-            return this;
         }
+        return this;
     },
     /*
      * 播放器选择策略
      */
     dispatch: function() {
-        if (vvp.browser.isSupportH5M3U8 || vvp.browser.isSupportH5MP4) {
+        if (browser.isSupportH5M3U8 ||browser.isSupportH5MP4) {
             //vvp.VideoPlayer 核心 无ui
             return vvp.Player; //带ui
-        } else if (this.isSupportFlash) { //使用flash播放器
+        } else if (browser.isSupportFlash) { //使用flash播放器
             throw new Error('Please Use Flash Player');
         } else {
             throw new Error('The Device not support');
@@ -69,16 +90,18 @@ vvp.fn = {
 vvp.fn.init.prototype = vvp.fn;
 
 vvp.extend = vvp.fn.extend = function() {
-    verge.extend.apply(this, arguments);
+    vQ.extend.apply(this, arguments);
 };
 
 vvp.extend({
-    version: '@VERSION'
+    version: '@VERSION',
+    browser:browser,
+    CoreObject:CoreObject,
+    VideoPlayer:VideoPlayer,
+    Player:Player
 });
-//统一创建组件的命名空间
-verge.routes('vvp.view');
-verge.routes('vvp.component');
 
 // Expose vvp to the global object
 //window.vvp = window.vvp = vvp;
-window['@NAME'.toUpperCase()] = window['@NAME'] = vvp;
+global['@NAME'.toUpperCase()] = global['@NAME'] = vvp;
+module.exports = vvp;
