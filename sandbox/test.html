@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../dev/stylesheets/vvp.css">
+    <script rel="script" src="../dev/scripts/vvp.js" type="text/javascript"></script>
+    <style type="text/css"></style>
+</head>
+<body>
+    <div class="main" style="width: 100%;height: 1000px;">
+      <div id="player" style="width: 100%;height: 1000px;"></div>
+    </div>
+    <script type="text/javascript">
+      var player;
+      player = vvp('#player',{
+        autoplay:false,
+        src:'http://7xng1b.com1.z0.glb.clouddn.com/mp4test.mp4'
+      });
+      vvp.ready(function(){
+        player = vvp('#player',{
+          autoplay:false,
+          src:'http://7xng1b.com1.z0.glb.clouddn.com/mp4test.mp4'
+        });
+      });
+    </script>
+</body>
+</html>

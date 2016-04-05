@@ -4,7 +4,7 @@
  * MIT Licensed
  * @class
  * @since 2015/9/24.
- * @modify 2016/3/16.
+ * @modify 2016/4/5.
  * @author zhengzk
  *
  *
@@ -106,7 +106,8 @@ var Player = VideoPlayer.extend({
     return own;
   },
   /**
-   *
+   * controls
+   * @param flag
    */
   controls: function (flag) {
     this.trigger('onControlsChange', [flag]);

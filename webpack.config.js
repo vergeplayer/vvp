@@ -1,6 +1,11 @@
 /**
- * Created by zhengzk on 2016/2/22.
- */
+ * webpack.config
+ * Copyright 2016, webpack.config.js
+ * MIT Licensed
+ * @since 2016/2/22.
+ * @modify 2016/4/5.
+ * @author zhengzk
+ **/
 var webpack = require('webpack');
 var path = require( 'path' );
 
@@ -43,7 +48,8 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       "vQ": "vergequery",
-      "verge":"js/verge.js"
+      "verge":"js/verge.js",
+      'TEXT':"js/text.js"
     })
   // new MyPlugin({}),
   //  new webpack.optimize.UglifyJsPlugin({

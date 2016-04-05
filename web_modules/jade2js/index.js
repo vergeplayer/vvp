@@ -3,7 +3,7 @@
  * Copyright 2016, index.js
  * MIT Licensed
  * @since 2016/2/24.
- * @modify 2016/3/16.
+ * @modify 2016/3/17.
  * @author zhengzk
  **/
 
@@ -83,7 +83,7 @@ module.exports = function (source) {
         "});\n" +
         "module.exports = " + name + ";";
     },
-    processModule: function (node, varName) {
+    processModule: function (node, varName,parent) {
       //依赖的jade文件 统一后缀都带有.jade
       var mod_name = utils.parseName(path.basename(node.file.path, ".jade"));
       var mod_filename = path.basename(node.file.path, ".jade") + ".jade";
@@ -103,7 +103,9 @@ module.exports = function (source) {
       //}
       return "var " + varName + " = require(" +
         loaderUtils.stringifyRequest(this, loaderStr + _reqPath) + ").create(options['" + mod_name +"'],arguments[1]);\n" + //"+(query.component ? "this.player" :"this")
-        "this.childs.push(" + varName + ");\n"+ varName + ".parent = this;\n";
+        "this.childs.push(" + varName + ");\n"+ varName + ".parent = this;\n"+
+        (parent != "frag" ? (parent + ".append(" + varName + ".fragment);") : "frag.appendChild(" + varName + ".fragment);");
+
 
       //test
       //own.addDependency(absPath);

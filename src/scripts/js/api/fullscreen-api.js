@@ -1,13 +1,13 @@
 /**
  * 全屏事件api
- * Copyright 2015-2016, full-screen-api.js
+ * Copyright 2015 1VERGE Inc, full-screen-api.js
  * MIT Licensed
  * @since 2015/9/24.
  * @modify 2016/2/22.
  * @author zhengzk
  * 参照video.js实现:https://github.com/videojs/video.js/blob/master/src/js/fullscreen-api.js
  **/
-
+//https://developer.mozilla.org/zh-CN/docs/DOM/Using_fullscreen_mode
 var apiMap = [
     // Spec: https://dvcs.w3.org/hg/fullscreen/raw-file/tip/Overview.html
     [

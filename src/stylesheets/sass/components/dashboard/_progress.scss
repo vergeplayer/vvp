@@ -1,7 +1,6 @@
 //
 // Progress
 // --------------------------------------------------
-
 .vvp-progress,
 .vvp-progress-track,
 .vvp-progress-buffer,
@@ -54,5 +53,6 @@
     @include size(100%, 0.3em)
 }
 .vvp-progress-mini {
-    @include hide-display()
+  display: none;
+  //@include hide-display()
 }

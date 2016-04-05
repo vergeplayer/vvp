@@ -78,6 +78,34 @@ gulp.task('scripts', function() {
   return combined;
 });
 
+// concatenate & minify js
+gulp.task('aaa', function() {
+  var combined = combiner.obj([
+    gulp.src("src/scripts/js/view/components/dashboard/controls/quality.js"),
+    webpack( require('./webpack.config.js') ),
+    utils.addNote(),
+    utils.parseData(),
+    eslint('.eslintrc'),
+    rename({
+      basename:'quality'
+    }),
+    gulp.dest('dev/scripts/'),
+    uglify({
+
+    }),
+    rename({
+      suffix: '.min'
+    }),
+    gulp.dest('dev/scripts/'),
+    livereload(),
+    notify({
+      message: 'Scripts task complete'
+    })
+  ]);
+  combined.on('error', console.error.bind(console));
+  return combined;
+});
+
 //optimization images
 gulp.task('images', function () {
   return gulp.src('src/assets/images/**/*')

@@ -1,6 +1,6 @@
 /**
  * player可调用方法api
- * Copyright 2015-2016, player-api.js
+ * Copyright 2015-2016 1VERGE Inc, player-api.js
  * MIT Licensed
  * @since 2015/9/24.
  * @modify 2016/3/7.

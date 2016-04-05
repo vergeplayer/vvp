@@ -3,7 +3,7 @@
  * Copyright 2016, component.js
  * MIT Licensed
  * @since 2016/1/25.
- * @modify 2016/3/16.
+ * @modify 2016/3/17.
  * @author zhengzk
  **/
 var slice = require('./utils.js').slice;
@@ -84,17 +84,21 @@ var Component = CoreObject.extend({
    * Interface
    * 处理Dom元素事件/process Dom element events
    * @param attr
+   * @param player
    * @private
-   */
-  _initEvent: function (attr) {
+     */
+  _initEvent: function (attr,player) {
 
   },
   /**
    * Interface
    * 构建View / build Dom
+   * @param attr
+   * @param player
+   * @returns {DocumentFragment}
    * @private
    */
-  _createView: function () {
+  _createView: function (attr,player) {
     var frag = document.createDocumentFragment();
     this.fragment = frag;
     return frag;

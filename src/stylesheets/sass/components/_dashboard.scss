@@ -9,8 +9,8 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    @include display-flex();;
-    @include size(100%, 5em)
+    @include display-flex();
+    @include size(100%, 5em);
 
     button {
         padding: 0;
@@ -19,4 +19,17 @@
         outline: 0;
         @include size(100%, 100%)
     }
+}
+
+.vvp-dashboard.vvp-dashboard-hide {
+  height: auto;
+  .vvp-controls{
+    display: none;
+  }
+  .vvp-progress{
+    display: none;
+  }
+  .vvp-progress-mini{
+    display: block;
+  }
 }

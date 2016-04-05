@@ -3,7 +3,7 @@
  * Copyright 2015-2016, video-player.js
  * MIT Licensed
  * @since 2015/9/10.
- * @modify 2016/3/16.
+ * @modify 2016/4/5.
  * @author zhengzk
  *
  *  ****************************
@@ -235,7 +235,7 @@ var VideoPlayer = CoreObject.extend({
     var own = this;
     this.isFullscreen = true;
 
-    if (browser.supportsFullScreen) {
+    if (browser.supportsFullscreen) {
       // we can't take the video.js controls fullscreen but we can go fullscreen
       // with native controls
       own._enterFullscreen();

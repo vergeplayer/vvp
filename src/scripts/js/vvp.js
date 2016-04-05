@@ -3,7 +3,7 @@
  * Copyright 2015-2016, vvp.js
  * MIT Licensed
  * @since 2015/9/24.
- * @modify 20160/3/4.
+ * @modify 2016/4/5.
  * @author zhengzk
  **/
 // HTML5 Element Shim for IE8
@@ -40,7 +40,7 @@ vvp.fn = {
 
         } else {
             var targets = vQ(selector);
-            var Player = this.dispatch();
+            var Player = vvp.dispatch();
             targets.each(function(i, element) {
                 if(element.nodeName){
                   var player;
@@ -59,19 +59,6 @@ vvp.fn = {
             });
         }
         return this;
-    },
-    /*
-     * 播放器选择策略
-     */
-    dispatch: function() {
-        if (browser.isSupportH5M3U8 ||browser.isSupportH5MP4) {
-            //vvp.VideoPlayer 核心 无ui
-            return vvp.Player; //带ui
-        } else if (browser.isSupportFlash) { //使用flash播放器
-            throw new Error('Please Use Flash Player');
-        } else {
-            throw new Error('The Device not support');
-        }
     },
     /**
      * 遍历
@@ -98,7 +85,27 @@ vvp.extend({
     browser:browser,
     CoreObject:CoreObject,
     VideoPlayer:VideoPlayer,
-    Player:Player
+    Player:Player,
+    vQ:vQ,
+    /*
+     * 播放器选择策略
+     */
+    dispatch: function() {
+      if (browser.isSupportH5M3U8 ||browser.isSupportH5MP4) {
+        //vvp.VideoPlayer 核心 无ui
+        return vvp.Player; //带ui
+      } else if (browser.isSupportFlash) { //使用flash播放器
+        throw new Error('Please Use Flash Player');
+      } else {
+        throw new Error('The Device not support');
+      }
+    },
+    plugin:function(name,init){
+      var Player = vvp.dispatch();
+      var extend = {};
+      extend[name] = init;
+      Player.expand(extend);
+    }
 });
 
 // Expose vvp to the global object

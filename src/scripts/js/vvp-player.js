@@ -4,7 +4,7 @@
  * Copyright 2015-2016, vvp.js
  * MIT Licensed
  * @since 2015/9/30.
- * @modify 2016/3/4.
+ * @modify 2016/4/5.
  * @author zhengzk
  **/
 var vvp = require('./vvp.js');
@@ -99,7 +99,7 @@ vvp.fn.extend(function () {
 
             var player = this[0];
             if (player) {
-                return player[attr].apply(player);
+                return player[attr].apply(player,slice.call(arguments));
             }
             //return undefined;
         };

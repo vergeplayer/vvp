@@ -12,11 +12,11 @@
         position: absolute;
         font-size: 1.4em;
         left: 41%;
-        top: 1em;
-        @include gradient-vertical($color-play-btn-start, $color-play-btn-end)
+        top: 1.2em;
+        @include gradient-vertical($color-play-btn-start, $color-play-btn-end);
     }
     .vvp-ico-pause {
-        @include gradient-vertical($color-pause-btn-start, $color-pause-btn-end)
+        @include gradient-vertical($color-pause-btn-start, $color-pause-btn-end);
         @include background-clip(text);
         @include text-fill-color(transparent)
     }

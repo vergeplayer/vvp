@@ -3,7 +3,7 @@
  * Copyright 2015-2016, verge.js
  * MIT Licensed
  * @since 2015/9/12.
- * @modify 2016/3/16.
+ * @modify 2016/4/5.
  * @author zhengzk
  **/
 /**
@@ -92,13 +92,13 @@ var verge = {
      * @returns {*}
      */
     mapStyle: function(style) {
-        if (typeof style == "object") return style;
-        var defs = (style + "").split(";");
-        style = {};
-        for (var def in defs) {
-            def = defs[def].split(":");
-            style[def[0]] = def[1];
-        }
+        //if (typeof style == "object") return style;
+        //var defs = (style + "").split(";");
+        //style = {};
+        //for (var def in defs) {
+        //    def = defs[def].split(":");
+        //    style[def[0]] = def[1];
+        //}
         return style;
     },
     /**

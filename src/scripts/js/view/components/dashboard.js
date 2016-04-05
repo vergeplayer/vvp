@@ -3,7 +3,7 @@
  * Copyright 2016, dashboard.js
  * MIT Licensed
  * @since 2016/1/17.
- * @modify 2016/3/16.
+ * @modify 2016/4/5.
  * @author zhengzk
  **/
 //获取组件DOM结构
@@ -18,49 +18,39 @@ Dashboard.expand({
    */
   _initEvent: function (options,player) {
     var own = this;
+    var _show_ctl__timer;
     var clearTimer = function (timer) {
-      if (own._show_ctl__timer) {
-        clearTimeout(own._show_ctl__timer);
-        delete own._show_ctl__timer;
+      if (_show_ctl__timer) {
+        clearTimeout(_show_ctl__timer);
+        delete _show_ctl__timer;
       }
     };
 
-    var _dashboard_show = true;
     //鼠标悬停时不hide
     //own.root.bind()
     own.bind('onControlsChange', function (event,flag) {
-      if (flag == !own.root.isHidden()) {
-        return;
-      }
+      //if (flag == !own.root.isHidden()) {
+      //  return;
+      //}
+      //if(flag == own.root.hasClass('vvp-controls-hide')){
+      //  return;
+      //}
       if (flag) {
-        own.root.show();
-        _dashboard_show = true;
+        own.root.removeClass('vvp-dashboard-hide');
         clearTimer();
-        own._show_ctl__timer = setTimeout(function () {
+        _show_ctl__timer = setTimeout(function () {
           if (!own.player.paused()) {
             //own.root.hide();
-            //player._dashboard_show = false;
-            own.trigger('onControlsChange', [false]);
+            //own.trigger('onControlsChange', [false]);
+            player.controls(false);
           }
         }, 5000);
       } else {
-        own.root.hide();
-        _dashboard_show = false;
+        own.root.addClass('vvp-dashboard-hide');
         clearTimer();
       }
     });
   }
 });
-
-//vvp.Player.expand({
-//    _dashboard_show:true,
-//    controls:function(flag){
-//        var own = this;
-//        if(arguments.length > 0 && flag != this._dashboard_show){
-//            own.trigger('onControlsChange',[!!flag]);
-//        }
-//        return this._dashboard_show;
-//    }
-//});
 
 module.exports = Dashboard;
