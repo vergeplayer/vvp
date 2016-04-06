@@ -3,7 +3,7 @@
  * Copyright 2016, dashboard.js
  * MIT Licensed
  * @since 2016/1/17.
- * @modify 2016/4/5.
+ * @modify 2016/4/6.
  * @author zhengzk
  **/
 //获取组件DOM结构
@@ -26,6 +26,16 @@ Dashboard.expand({
       }
     };
 
+    var mouseleave = function(){
+      _show_ctl__timer = setTimeout(function () {
+        if (!own.player.paused()) {
+          //own.root.hide();
+          //own.trigger('onControlsChange', [false]);
+          player.controls(false);
+        }
+      }, 5000);
+    };
+
     //鼠标悬停时不hide
     //own.root.bind()
     own.bind('onControlsChange', function (event,flag) {
@@ -38,16 +48,11 @@ Dashboard.expand({
       if (flag) {
         own.root.removeClass('vvp-dashboard-hide');
         clearTimer();
-        _show_ctl__timer = setTimeout(function () {
-          if (!own.player.paused()) {
-            //own.root.hide();
-            //own.trigger('onControlsChange', [false]);
-            player.controls(false);
-          }
-        }, 5000);
+        own.root.bind('mouseleave',mouseleave);
       } else {
         own.root.addClass('vvp-dashboard-hide');
         clearTimer();
+        own.root.unbind('mouseleave',mouseleave);
       }
     });
   }
