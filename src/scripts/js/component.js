@@ -6,10 +6,14 @@
  * @modify 2016/3/17.
  * @author zhengzk
  **/
-var slice = require('./utils.js').slice;
-var CoreObject = require('./base/core-object.js');
-var EventManager = require('./base/event-manger.js');
-var Event = require('./base/Event.js');
+
+//var utils = require('./utils.js');
+var log = verge.log,
+    CoreObject = verge.CoreObject,
+    EventManager = verge.EventManager,
+    //Event = verge.Event,
+    slice = [].slice;
+
 var components = {};
 
 /**
@@ -289,7 +293,7 @@ var Component = CoreObject.extend({
     }
 
     //非DOM元素
-    if(!verge.isDOMElement(node)){
+    if(!utils.isDOMElement(node)){
       return ;
     }
 

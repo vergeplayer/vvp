@@ -9,9 +9,6 @@
 
 var vvp = require('./vvp.js');
 
-require('./component.js');
-require('./vvp-player.js');
-
 //ready相关
 var readyList = [];
 vvp.extend({
@@ -47,8 +44,8 @@ vvp.extend({
 });
 
 
-if (typeof exports === 'object' && typeof module !== 'object'){
-    // Expose vQ to the exports object
+//if (typeof exports === 'object' && typeof module !== 'object'){
+//    // Expose vQ to the exports object
     var _vvp = exports['@NAME'];
 
     vvp.extend({
@@ -69,7 +66,7 @@ if (typeof exports === 'object' && typeof module !== 'object'){
     //exports['@NAME'.toUpperCase()] = exports['@NAME'] = vvp;
 //}else{
     //return vvp;
-}
+//}
 
 vQ.ready(vvp.ready);
 module.exports = vvp;

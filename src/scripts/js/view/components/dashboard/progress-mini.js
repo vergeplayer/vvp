@@ -8,7 +8,7 @@
  **/
 //获取组件DOM结构
 var ProgressMini = require('jade2js?jade!jade/components/dashboard/progress-mini.jade');
-var utils = require('js/utils.js');
+//var utils = require('js/utils.js');
 
 //扩展组件为其添加事件交互等
 ProgressMini.expand({
@@ -44,25 +44,26 @@ ProgressMini.expand({
     });
   },
   /**
-   *
+   * 设置Duration
    * @param dur
    * @private
    */
   _setDuration:function(dur){
     this.root.attr({
-      'aria-valuetext':TEXT.progress.duration.replace('%time%',utils.time2text(dur))
+      'aria-valuetext':TEXT.progress.duration.replace('%time%',utils.long2text(dur))
     });
   },
   /**
    * 设置播放进度
    * @param played
+   * @param long
    * @private
-   */
-  _setPlayed: function (played,time) {
+     */
+  _setPlayed: function (played,long) {
     var val = parseFloat(played * 100).toFixed(3);
     this.played.css("width", val + "%");
     this.played.attr({
-      'aria-label':TEXT.progress.played.replace('%time%',utils.time2text(time)),
+      'aria-label':TEXT.progress.played.replace('%time%',utils.long2text(long)),
       'aria-valuenow':val
     });
     this.root.attr({
@@ -72,13 +73,14 @@ ProgressMini.expand({
   /**
    * 设置缓冲进度
    * @param buffer
+   * @param long
    * @private
    */
-  _setBuffer: function (buffer,time) {
+  _setBuffer: function (buffer,long) {
     var val = parseFloat(buffer * 100).toFixed(3);
     this.buffer.css("width", buffer * 100 + "%");
     this.buffer.attr({
-      'aria-label':TEXT.progress.buffer.replace('%time%',utils.time2text(time)),
+      'aria-label':TEXT.progress.buffer.replace('%time%',utils.long2text(long)),
       'aria-valuenow':val
     });
   }

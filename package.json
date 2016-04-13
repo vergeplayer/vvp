@@ -1,6 +1,6 @@
 {
   "name": "vvp",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Verge Video Player",
   "main": "gulpfile.js",
   "directories": {
@@ -8,7 +8,8 @@
     "test": "test"
   },
   "dependencies": {
-    "vergequery": "0.0.4"
+    "Verge": "^0.1.0",
+    "vQ": "^0.1.0"
   },
   "devDependencies": {
     "browser-sync": "^2.10.1",

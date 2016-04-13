@@ -10,20 +10,22 @@ var webpack = require('webpack');
 var path = require( 'path' );
 
 module.exports = {
-  //output: {
-  //  filename: 'b.js'
-  //},
-  //resolve: {
-  //  extensions: ['', '.css', '.js','.jade']
-  //},
+  output: {
+    //filename: 'b.js',
+    libraryTarget: 'umd',//'umd' 'commonjs'
+    library:'vvp'
+  },
   //module: {
     loaders: [
-      {test: /\.js/, loader:function(){
+      {
+        test: /\.js/, loader: function () {
         //console.log('aaa');
         return "";
-      }},
-      {test: /\.jade$/, loader:"jade2js"},
-      //{test: require.resolve("vergequery"), loader: "expose?$!expose?vergequery"},
+      }
+      },
+      {test: /\.jade$/, loader: "jade2js"},
+      //{test: require.resolve("vQ"), loader: "expose?$!expose?vQ"},
+      //{test: require.resolve("Verge"), loader: "expose?$!expose?verge"},
       {test: /\.swf$/, loader: "file?name=[path][name].[ext]"}
       //{
       //  test: /\.js$/,
@@ -31,6 +33,7 @@ module.exports = {
       //  loader: 'babel-loader' // 'babel-loader' is also a legal name to reference
       //}
     ],
+  //},
   resolve: {
     alias:{
       js:"src/scripts/js",
@@ -47,9 +50,10 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      "vQ": "vergequery",
-      "verge":"js/verge.js",
-      'TEXT':"js/text.js"
+      "vQ": "vQ",
+      "verge":"Verge",
+      "utils":"js/utils.js",
+      "TEXT":"js/text.js"
     })
   // new MyPlugin({}),
   //  new webpack.optimize.UglifyJsPlugin({

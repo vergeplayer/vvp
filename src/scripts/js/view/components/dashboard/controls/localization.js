@@ -7,8 +7,10 @@
  * @author zhengzk
  **/
 var viewFun = require('jade2js?-component!jade/components/dashboard/controls/localization.jade');
+var slice = [].slice;
+//var utils = require('js/utils.js');
 var Select = require('js/view/base/select.js');
-var slice = require('js/utils.js').slice;
+
 
 var Localization = Select.extend({
   name:"Localization",

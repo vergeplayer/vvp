@@ -12,7 +12,8 @@
 //var Quality = require('jade2js!jade/components/dashboard/controls/quality.jade');
 var viewFun = require('jade2js?-component!jade/components/dashboard/controls/quality.jade');
 var Select = require('js/view/base/select.js');
-var slice = require('js/utils.js').slice;
+var slice = [].slice;
+//var utils = require('js/utils.js');
 
 var Quality = Select.extend({
   name:"Quality",

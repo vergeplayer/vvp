@@ -8,6 +8,7 @@
  **/
 //获取组件DOM结构
 var TimeDisplay = require('jade2js?jade!jade/components/dashboard/controls/time-display.jade');
+//var utils = require('js/utils.js');
 //扩展组件为其添加事件交互等
 TimeDisplay.expand({
     /**
@@ -36,12 +37,12 @@ TimeDisplay.expand({
         if(arguments.length >= 1) {//传1个参数 curr
             curr = parseInt(curr);
             if (!isNaN(curr)) {
-                own.current.text(verge.long2time(curr)); //时间格式转换
+                own.current.text(utils.long2time(curr)); //时间格式转换
             }
             if (arguments.length >= 2) {//传两个参数 curr,duration
                 dur = parseInt(dur);
                 if(!isNaN(dur)){
-                    own.duration.text(verge.long2time(dur));//时间格式转换
+                    own.duration.text(utils.long2time(dur));//时间格式转换
                 }
             }
         }

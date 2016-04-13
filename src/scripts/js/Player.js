@@ -21,14 +21,16 @@
  *    **************************************
  *
  **/
+var log = verge.log,
+    browser = verge.browser,
+    fsApi = verge.fullscreenApi(document);
+    VideoPlayer = verge.VideoPlayer,
+    slice = [].slice;
 
-var VideoPlayer = require('./video-player.js');
 var Component = require('./component.js');
-var fsApi = require('./api/fullscreen-api.js');
+//var utils = require('./utils.js');
 var viewFun = require('jade2js?-component&jade!jade/verge/verge.jade');
-var log = require('./log.js');
 
-var slice = require('./utils.js').slice;
 
 var Player = VideoPlayer.extend({
 //var Player = Component.extend(VideoPlayer,{
@@ -39,7 +41,7 @@ var Player = VideoPlayer.extend({
    * @param options
    */
   init: function (element, options) {
-    if (!verge.isDOMElement(element)) {
+    if (!utils.isDOMElement(element)) {
       throw new Error('The Param element Type Error');
       return;
     }

@@ -61,20 +61,20 @@ module.exports = function (source) {
   var _options = {
     name: utils.parseName(filename),
     key:"vvp_id",
-    utils:"verge",
+    utils:"utils",
     routes:false,
     translate: function (data, name) {
       if (query.component == false) {
-        //return "var verge = require(" +
-        //  loaderUtils.stringifyRequest(this, "js/verge.js") +
-        //  ");\n" +
+        //"var utils = require(" +
+        //loaderUtils.stringifyRequest(this, "js/utils.js") +
+        //");\n" +
          return "module.exports = " + data + ";";
       }
       return "var Component = require(" +
         loaderUtils.stringifyRequest(this, "js/component.js") +
         ");\n" +
-        //"var verge = require(" +
-        //loaderUtils.stringifyRequest(this, "js/verge.js") +
+        //"var utils = require(" +
+        //loaderUtils.stringifyRequest(this, "js/utils.js") +
         //");\n" +
         "var " + name + " = Component.extend({\n" +
         "\t name:'" + name +"',\n"+

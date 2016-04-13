@@ -9,7 +9,7 @@
 //获取组件DOM结构
 var Progress = require('jade2js?jade!jade/components/dashboard/progress.jade');
 //var rootNodeRE = /^(?:body|html)$/i;
-var utils = require('js/utils.js');
+//var utils = require('js/utils.js');
 
 //扩展组件为其添加事件交互等
 Progress.expand({
@@ -47,7 +47,7 @@ Progress.expand({
 
     var rnode = own.root[0];
     own.root.bind('mousedown', function (e) {
-      var left = verge.getClientLeft(rnode.offsetParent);
+      var left = utils.getClientLeft(rnode.offsetParent);
       var l = e.clientX + rnode.scrollLeft - left;//- (24 / 2);
       var al = rnode.clientWidth - 24;
       var per = parseFloat(l / al).toFixed(5);
@@ -64,7 +64,7 @@ Progress.expand({
     };
 
     var seekMove = function (e) {
-      var left = verge.getClientLeft(rnode.offsetParent);
+      var left = utils.getClientLeft(rnode.offsetParent);
       var l = e.clientX - left - 24 / 2;
       var per = parseFloat(l / rnode.clientWidth).toFixed(5);
       own._setHandle(per);
@@ -102,7 +102,7 @@ Progress.expand({
    */
   _setDuration: function (dur) {
     this.root.attr({
-      'aria-valuetext': TEXT.progress.duration.replace('%time%', utils.time2text(dur))
+      'aria-valuetext': TEXT.progress.duration.replace('%time%', utils.long2text(dur))
     });
   },
   /**
@@ -229,14 +229,15 @@ Progress.expand({
   /**
    * 设置播放进度
    * @param played
+   * @param long
    * @private
    */
-  _setPlayed: function (played, time) {
+  _setPlayed: function (played, long) {
     var val = parseFloat(played * 100).toFixed(3);
     this.played.css("width", val + "%");
-    this._setHandle(played, time);
+    this._setHandle(played, long);
     this.played.attr({
-      'aria-label': TEXT.progress.played.replace('%time%', utils.time2text(time)),
+      'aria-label': TEXT.progress.played.replace('%time%', utils.long2text(long)),
       'aria-valuenow': val
     });
     this.root.attr({
@@ -255,13 +256,14 @@ Progress.expand({
   /**
    * 设置缓冲进度
    * @param buffer
+   * @param long
    * @private
    */
-  _setBuffer: function (buffer, time) {
+  _setBuffer: function (buffer, long) {
     var val = parseFloat(buffer * 100).toFixed(3);
     this.buffer.css("width", val + "%");
     this.buffer.attr({
-      'aria-label': TEXT.progress.buffer.replace('%time%', utils.time2text(time)),
+      'aria-label': TEXT.progress.buffer.replace('%time%', utils.long2text(long)),
       'aria-valuenow': val
     });
   }
