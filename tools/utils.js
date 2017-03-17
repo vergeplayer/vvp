@@ -1,9 +1,9 @@
 /**
- * gulp 自定义任务
- * Copyright 2015, utils.js
+ * 工具方法
+ * Copyright 2015-2016, utils.js
  * MIT Licensed
  * @since 2015/9/8.
- * @modify 2016/1/25.
+ * @modify 2016/2/29.
  * @author zhengzk
  **/
 var hasOwnProp = Object.prototype.hasOwnProperty,
@@ -29,7 +29,7 @@ function modify(modifier) {
  * @param options
  * @returns {string}
  */
-function paseData(data,options) {
+function parseData(data,options) {
     options = options || {};
     var name = options.name || pkg.name;
     var version = options.version || pkg.version;
@@ -49,7 +49,6 @@ function paseData(data,options) {
  */
 function addNote(data,options) {
     options = options || {};
-    //var timeStr = getCurrentTime();
     var timeStr = ( new Date() ).toISOString().replace( /:\d+\.\d+Z$/, "Z" );
     var name = options.name || pkg.name;
     var version = options.version || pkg.version;
@@ -59,27 +58,6 @@ function addNote(data,options) {
         //+ '(function(exports,undefined){\n'
         //+ data
         //+ '}('+ global +'));';
-}
-
-/**
- * 处理组件转换
- * @param data
- * @param name
- * @param target
- * @returns {string}
- */
-function translate(data,name,target){
-    var pre = "";
-    if(target){
-        pre = target + ".expand({\n"; //只生成view方法 并将方法绑定到指定对象
-    }else{
-        pre = name + " = vvp.Component.extend({\n";
-    }
-    return pre
-        +"\t _createView:"
-        + data
-        + "});\n";
-    //+ name.replace("view","component") + " = " + name + ";\n";
 }
 
 /**
@@ -101,9 +79,9 @@ function merge(first, second) {
 }
 
 //exports
-exports.paseData = function(options){
+exports.parseData = function(options){
     return modify(function(str){
-        return paseData(str,options);
+        return parseData(str,options);
     });
 };
 
@@ -114,7 +92,6 @@ exports.addNote = function(options){
 };
 
 exports.modify = modify;
-exports.translate = translate;
 exports.merge = merge;
 
 

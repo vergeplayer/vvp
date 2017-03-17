@@ -1,11 +1,13 @@
-.vvp-quality
-    button(aria-haspopup="true", aria-owns="vvp-quality-panel", aria-expanded="false", title="清晰度") 
-        span.vvp-txt-btn 高清
-    .vvp-panel(id="vvp-quality-panel", aria-hidden="true")
+- var data = data || {0:"标清",1:"高清",2:"超清"};
+- var select = select || 1;
+.vvp-quality(vvp_id="root")
+    button(vvp_id="button" aria-haspopup="true", aria-owns="vvp-quality-panel", aria-expanded="false", title="清晰度")
+        span.vvp-txt-btn= data[select]
+    .vvp-panel(vvp_id="panel" id="vvp-quality-panel", aria-hidden="true")
         ul(role="menu")
-            li(role="menuitem")
-                button(class="vvp-selected", role="menuitemradio", aria-selected="true") 超清 
-            li(role="menuitem")
-                button(role="menuitemradio", aria-selected="false") 高清
-            li(role="menuitem")
-                button(role="menuitemradio", aria-selected="false") 标清
+            - for (var key in data)
+                li(role="menuitem")
+                    if (key == select)
+                        button(key=key role="menuitemradio", aria-selected="true" class="vvp-selected")= data[key]
+                    else
+                        button(key=key role="menuitemradio", aria-selected="false")= data[key]

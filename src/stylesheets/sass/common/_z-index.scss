@@ -21,10 +21,12 @@
 .vvp-controls {
     z-index: 200
 }
-
+.vvp-progress{
+    z-index: 201
+}
 // 进度条 .vvp-progress(mini)  -> .vvp-controls -> .vvp-player
 // --------------------------------------------------
-.vvp-progress,
+//.vvp-progress,
 .vvp-progress-mini {
     z-index:100
 }

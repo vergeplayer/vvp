@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<link>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://player.youku.com/ykvideo/css/ykv.css"></link>
+    <title>Title</title>
+</head>
+<body>
+<div id="video_player"></div>
+<script src="http://player.youku.com/ykvideo/js/ykv.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  var player;
+  ykv.ready(function(){
+    player = ykv('#video_player',{
+      autoplay:true,/*将会传递至video*/
+      loop:false,/*将会传递至video*/
+      muted:false,/*将会传递至video*/
+      preload:false,/*将会传递至video*/
+      isWeixin:true,/*判断是否在微信内，非必须，默认true*/
+      src:'http://7xng1b.com1.z0.glb.clouddn.com/mp4test.mp4',/*将会传递至video*/
+      controls:false,//是否展现controls
+      poster:'http://r1.ykimg.com/05410408514A28096A0A417984A7F296',
+      type:'live',//直播播放器(默认) //后续添加点播和切换
+      tslog:{
+        must:['liveid','vvid'],//['liveid','screenid','vvid','ctype']
+        data:{
+          liveid:'111',
+          vvid:'112'
+        }
+      }
+    });
+  });
+  </script>
+</body>
+</html>

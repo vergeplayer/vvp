@@ -1,3 +1,4 @@
+.idea
 .DS_Store
 .sass-cache
 *.swp
@@ -12,5 +13,5 @@ dev/*
 build/*
 
 .cache
-verge.mp4
+*.mp4
 *.bak

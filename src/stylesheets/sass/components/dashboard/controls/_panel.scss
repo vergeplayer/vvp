@@ -9,17 +9,18 @@
     padding: 0.2em;
     background: rgba(0 , 0 , 0 , 0.7);
     @include size(100%, auto);
-    @include hide-display()
+    //@include hide-display();
+    display: none;
     ul {
         padding:0;
         flex-direction: column;
         @include size(100%, auto);
-        @include display-flex()
+        @include display-flex();
     }
     li {
         list-style: none;
         margin-bottom: 0.5em;
-        @include size(100%, 2.4em)
+        @include size(100%, 2.4em);
         &:last-child{
             margin:0
         }
@@ -28,7 +29,7 @@
         color: $color-lightest;
         display: block;
         font-size: 1.2em;
-        @include size(100%, 2.4em)
+        @include size(100%, 2.4em);
     }
     .vvp-selected {
         color: $color-darker;
